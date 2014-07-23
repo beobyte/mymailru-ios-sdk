@@ -1,0 +1,429 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		9FFEE72118B8B8F100391E2D /* MyMailRuSDK Framework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 9FFEE72218B8B8F100391E2D /* Build configuration list for PBXAggregateTarget "MyMailRuSDK Framework" */;
+			buildPhases = (
+				9FFEE72718B8B93000391E2D /* Build MailRuSDK.framework */,
+			);
+			dependencies = (
+				9FFEE72618B8B8F900391E2D /* PBXTargetDependency */,
+			);
+			name = "MyMailRuSDK Framework";
+			productName = "MailRuSDK Framework";
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		0A5BAB2F197EC2980042F901 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FFEE7E018B9007A00391E2D /* UIKit.framework */; };
+		0A5BAB30197EC2CA0042F901 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC2FFB418B8B4F600F8D9D9 /* Foundation.framework */; };
+		0A5BAB9F197EC6120042F901 /* MMRErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A5BAB91197EC6120042F901 /* MMRErrors.h */; };
+		0A5BABA0197EC6120042F901 /* MMRErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BAB92197EC6120042F901 /* MMRErrors.m */; };
+		0A5BABA1197EC6120042F901 /* MMRRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A5BAB93197EC6120042F901 /* MMRRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A5BABA2197EC6120042F901 /* MMRRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BAB94197EC6120042F901 /* MMRRequest.m */; };
+		0A5BABA3197EC6120042F901 /* MMRSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A5BAB95197EC6120042F901 /* MMRSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A5BABA4197EC6120042F901 /* MMRSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BAB96197EC6120042F901 /* MMRSession.m */; };
+		0A5BABA5197EC6120042F901 /* MMRTokenCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A5BAB97197EC6120042F901 /* MMRTokenCache.h */; };
+		0A5BABA6197EC6120042F901 /* MMRTokenCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BAB98197EC6120042F901 /* MMRTokenCache.m */; };
+		0A5BABA7197EC6120042F901 /* MMRUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A5BAB99197EC6120042F901 /* MMRUtils.h */; };
+		0A5BABA8197EC6120042F901 /* MMRUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BAB9A197EC6120042F901 /* MMRUtils.m */; };
+		0A5BABA9197EC6120042F901 /* MyMailRu.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A5BAB9B197EC6120042F901 /* MyMailRu.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A5BABAA197EC6120042F901 /* MyMailRu.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BAB9C197EC6120042F901 /* MyMailRu.m */; };
+		0A5BABAB197EC6120042F901 /* MyMailRuSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A5BAB9D197EC6120042F901 /* MyMailRuSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A5BABAC197EC6120042F901 /* MyMailRuSDKVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A5BAB9E197EC6120042F901 /* MyMailRuSDKVersion.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9FFEE72518B8B8F900391E2D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9FC2FFA918B8B4F600F8D9D9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9FC2FFB018B8B4F600F8D9D9;
+			remoteInfo = MailRuSDK;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9FC2FFAF18B8B4F600F8D9D9 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0A5BAB91197EC6120042F901 /* MMRErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMRErrors.h; sourceTree = "<group>"; };
+		0A5BAB92197EC6120042F901 /* MMRErrors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMRErrors.m; sourceTree = "<group>"; };
+		0A5BAB93197EC6120042F901 /* MMRRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMRRequest.h; sourceTree = "<group>"; };
+		0A5BAB94197EC6120042F901 /* MMRRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMRRequest.m; sourceTree = "<group>"; };
+		0A5BAB95197EC6120042F901 /* MMRSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMRSession.h; sourceTree = "<group>"; };
+		0A5BAB96197EC6120042F901 /* MMRSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMRSession.m; sourceTree = "<group>"; };
+		0A5BAB97197EC6120042F901 /* MMRTokenCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMRTokenCache.h; sourceTree = "<group>"; };
+		0A5BAB98197EC6120042F901 /* MMRTokenCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMRTokenCache.m; sourceTree = "<group>"; };
+		0A5BAB99197EC6120042F901 /* MMRUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMRUtils.h; sourceTree = "<group>"; };
+		0A5BAB9A197EC6120042F901 /* MMRUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMRUtils.m; sourceTree = "<group>"; };
+		0A5BAB9B197EC6120042F901 /* MyMailRu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMailRu.h; sourceTree = "<group>"; };
+		0A5BAB9C197EC6120042F901 /* MyMailRu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMailRu.m; sourceTree = "<group>"; };
+		0A5BAB9D197EC6120042F901 /* MyMailRuSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMailRuSDK.h; sourceTree = "<group>"; };
+		0A5BAB9E197EC6120042F901 /* MyMailRuSDKVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMailRuSDKVersion.h; sourceTree = "<group>"; };
+		9FC2FFB118B8B4F600F8D9D9 /* libMyMailRuSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMyMailRuSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FC2FFB418B8B4F600F8D9D9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9FFEE7E018B9007A00391E2D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9FC2FFAE18B8B4F600F8D9D9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A5BAB30197EC2CA0042F901 /* Foundation.framework in Frameworks */,
+				0A5BAB2F197EC2980042F901 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0A5BABAD197EC6190042F901 /* MyMailRuSDK */ = {
+			isa = PBXGroup;
+			children = (
+				0A5BAB91197EC6120042F901 /* MMRErrors.h */,
+				0A5BAB92197EC6120042F901 /* MMRErrors.m */,
+				0A5BAB93197EC6120042F901 /* MMRRequest.h */,
+				0A5BAB94197EC6120042F901 /* MMRRequest.m */,
+				0A5BAB95197EC6120042F901 /* MMRSession.h */,
+				0A5BAB96197EC6120042F901 /* MMRSession.m */,
+				0A5BAB97197EC6120042F901 /* MMRTokenCache.h */,
+				0A5BAB98197EC6120042F901 /* MMRTokenCache.m */,
+				0A5BAB99197EC6120042F901 /* MMRUtils.h */,
+				0A5BAB9A197EC6120042F901 /* MMRUtils.m */,
+				0A5BAB9B197EC6120042F901 /* MyMailRu.h */,
+				0A5BAB9C197EC6120042F901 /* MyMailRu.m */,
+				0A5BAB9D197EC6120042F901 /* MyMailRuSDK.h */,
+				0A5BAB9E197EC6120042F901 /* MyMailRuSDKVersion.h */,
+			);
+			name = MyMailRuSDK;
+			sourceTree = "<group>";
+		};
+		9FC2FFA818B8B4F600F8D9D9 = {
+			isa = PBXGroup;
+			children = (
+				0A5BABAD197EC6190042F901 /* MyMailRuSDK */,
+				9FC2FFB318B8B4F600F8D9D9 /* Frameworks */,
+				9FC2FFB218B8B4F600F8D9D9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9FC2FFB218B8B4F600F8D9D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9FC2FFB118B8B4F600F8D9D9 /* libMyMailRuSDK.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9FC2FFB318B8B4F600F8D9D9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9FFEE7E018B9007A00391E2D /* UIKit.framework */,
+				9FC2FFB418B8B4F600F8D9D9 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		9FFEE71E18B8B70D00391E2D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A5BABA3197EC6120042F901 /* MMRSession.h in Headers */,
+				0A5BABAC197EC6120042F901 /* MyMailRuSDKVersion.h in Headers */,
+				0A5BABA9197EC6120042F901 /* MyMailRu.h in Headers */,
+				0A5BABA1197EC6120042F901 /* MMRRequest.h in Headers */,
+				0A5BABAB197EC6120042F901 /* MyMailRuSDK.h in Headers */,
+				0A5BAB9F197EC6120042F901 /* MMRErrors.h in Headers */,
+				0A5BABA5197EC6120042F901 /* MMRTokenCache.h in Headers */,
+				0A5BABA7197EC6120042F901 /* MMRUtils.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		9FC2FFB018B8B4F600F8D9D9 /* MyMailRuSDK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9FC2FFD418B8B4F600F8D9D9 /* Build configuration list for PBXNativeTarget "MyMailRuSDK" */;
+			buildPhases = (
+				9FC2FFAD18B8B4F600F8D9D9 /* Sources */,
+				9FC2FFAE18B8B4F600F8D9D9 /* Frameworks */,
+				9FC2FFAF18B8B4F600F8D9D9 /* CopyFiles */,
+				9FFEE71E18B8B70D00391E2D /* Headers */,
+				9FFEE72018B8B7FA00391E2D /* Run Script */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MyMailRuSDK;
+			productName = MailRuSDK;
+			productReference = 9FC2FFB118B8B4F600F8D9D9 /* libMyMailRuSDK.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9FC2FFA918B8B4F600F8D9D9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Anton Grachev";
+			};
+			buildConfigurationList = 9FC2FFAC18B8B4F600F8D9D9 /* Build configuration list for PBXProject "MyMailRuSDK" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 9FC2FFA818B8B4F600F8D9D9;
+			productRefGroup = 9FC2FFB218B8B4F600F8D9D9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9FC2FFB018B8B4F600F8D9D9 /* MyMailRuSDK */,
+				9FFEE72118B8B8F100391E2D /* MyMailRuSDK Framework */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9FFEE72018B8B7FA00391E2D /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "mkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"\n\n# Link the \"Current\" version to \"A\"\n/bin/ln -sfh A \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/Current\"\n/bin/ln -sfh Versions/Current/Headers \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Headers\"\n/bin/ln -sfh \"Versions/Current/${PRODUCT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/${PRODUCT_NAME}\"\n\n# The -a ensures that the headers maintain the source modification date so that we don't constantly\n# cause propagating rebuilds of files that import these headers.\n/bin/cp -a \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"";
+		};
+		9FFEE72718B8B93000391E2D /* Build MailRuSDK.framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build MailRuSDK.framework";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nset +u\n# Avoid recursively calling this script.\nif [[ $SF_MASTER_SCRIPT_RUNNING ]]\nthen\n    exit 0\nfi\nset -u\nexport SF_MASTER_SCRIPT_RUNNING=1\n\nSF_TARGET_NAME=${PROJECT_NAME}\nSF_EXECUTABLE_PATH=\"lib${SF_TARGET_NAME}.a\"\nSF_WRAPPER_NAME=\"${SF_TARGET_NAME}.framework\"\n\n# The following conditionals come from\n# https://github.com/kstenerud/iOS-Universal-Framework\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\n    SF_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\n    echo \"Could not find platform name from SDK_NAME: $SDK_NAME\"\n    exit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\n    SF_SDK_VERSION=${BASH_REMATCH[1]}\nelse\n    echo \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\n    exit 1\nfi\n\nif [[ \"$SF_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\n    SF_OTHER_PLATFORM=iphonesimulator\nelse\n    SF_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$SF_SDK_PLATFORM$ ]]\nthen\n    SF_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${SF_OTHER_PLATFORM}\"\nelse\n    echo \"Could not find platform name from build products directory: $BUILT_PRODUCTS_DIR\"\n    exit 1\nfi\n\n# Build the other platform.\nxcrun xcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${SF_OTHER_PLATFORM}${SF_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" OBJROOT=\"${OBJROOT}\" BUILD_ROOT=\"${BUILD_ROOT}\" SYMROOT=\"${SYMROOT}\" $ACTION\n\n# Smash the two static libraries into one fat binary and store it in the .framework\nxcrun lipo -create \"${BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" -output \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n\n# Copy the binary to the other architecture folder to have a complete framework in both.\ncp -a \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n\n# copy to \"Library\" folder\ncp -r \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}\" \"${SRCROOT}/../\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9FC2FFAD18B8B4F600F8D9D9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A5BABA2197EC6120042F901 /* MMRRequest.m in Sources */,
+				0A5BABA0197EC6120042F901 /* MMRErrors.m in Sources */,
+				0A5BABA4197EC6120042F901 /* MMRSession.m in Sources */,
+				0A5BABAA197EC6120042F901 /* MyMailRu.m in Sources */,
+				0A5BABA8197EC6120042F901 /* MMRUtils.m in Sources */,
+				0A5BABA6197EC6120042F901 /* MMRTokenCache.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9FFEE72618B8B8F900391E2D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9FC2FFB018B8B4F600F8D9D9 /* MyMailRuSDK */;
+			targetProxy = 9FFEE72518B8B8F900391E2D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		9FC2FFD218B8B4F600F8D9D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		9FC2FFD318B8B4F600F8D9D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9FC2FFD518B8B4F600F8D9D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
+				DSTROOT = /tmp/MailRuSDK.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = MyMailRuSDK;
+				PUBLIC_HEADERS_FOLDER_PATH = Headers;
+				SKIP_INSTALL = YES;
+				STRIP_STYLE = "non-global";
+			};
+			name = Debug;
+		};
+		9FC2FFD618B8B4F600F8D9D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
+				DSTROOT = /tmp/MailRuSDK.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = MyMailRuSDK;
+				PUBLIC_HEADERS_FOLDER_PATH = Headers;
+				SKIP_INSTALL = YES;
+				STRIP_STYLE = "non-global";
+			};
+			name = Release;
+		};
+		9FFEE72318B8B8F100391E2D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = "MyMailRuSDK Framework";
+			};
+			name = Debug;
+		};
+		9FFEE72418B8B8F100391E2D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = "MyMailRuSDK Framework";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9FC2FFAC18B8B4F600F8D9D9 /* Build configuration list for PBXProject "MyMailRuSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9FC2FFD218B8B4F600F8D9D9 /* Debug */,
+				9FC2FFD318B8B4F600F8D9D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9FC2FFD418B8B4F600F8D9D9 /* Build configuration list for PBXNativeTarget "MyMailRuSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9FC2FFD518B8B4F600F8D9D9 /* Debug */,
+				9FC2FFD618B8B4F600F8D9D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9FFEE72218B8B8F100391E2D /* Build configuration list for PBXAggregateTarget "MyMailRuSDK Framework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9FFEE72318B8B8F100391E2D /* Debug */,
+				9FFEE72418B8B8F100391E2D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9FC2FFA918B8B4F600F8D9D9 /* Project object */;
+}
