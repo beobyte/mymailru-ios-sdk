@@ -25,6 +25,7 @@
 #import "MyMailRu.h"
 #import "MMRSession.h"
 #import "MMRUtils.h"
+#import "MMRErrors.h"
 
 static NSString* const kMMRAPIBaseURL = @"http://www.appsmail.ru/platform/api";
 
@@ -96,6 +97,12 @@ static NSString* const kMMRAPIBaseURL = @"http://www.appsmail.ru/platform/api";
                                id result = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonParsingError];
                                if (jsonParsingError) {
                                    if (handler) handler(nil, jsonParsingError);
+                                   return;
+                               }
+                               
+                               NSError *error = [MMRErrors errorFromJSON:result];
+                               if (error) {
+                                   if (handler) handler(nil, error);
                                    return;
                                }
                                
