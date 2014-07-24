@@ -29,32 +29,51 @@ Open session without user interaction (with cached tokens):
 
 ```Objective-C
 [MMRSession openSessionWithPermissions:@[@"stream"] // or any others permissions that your app need
-                             loginBehavior:MMRSessionLoginWithCachedToken
-                        completionsHandler:^(MMRSession *session, NSError *error) {
-                            if (error) {
-                                result = [error localizedDescription];
-                            } else {
-                                result = @"Session open successfully";
-                            }
-                             NSLog(@"%@", result);
-                        }];
+                         loginBehavior:MMRSessionLoginWithCachedToken
+                    completionsHandler:^(MMRSession *session, NSError *error) {
+                        if (error) {
+                            result = [error localizedDescription];
+                        } else {
+                            result = @"Session open successfully";
+                        }
+                        NSLog(@"%@", result);
+                    }];
 ```
 
-Open session with login view in your application: 
+Open session with login web view in your application: 
 
 ```Objective-C
 if (![MMRSession currentSession].isValid) {
-        [MMRSession openSessionWithPermissions:[self applicationPermissions]
-                                 loginBehavior:MMRSessionLoginInApp
-                            completionsHandler:^(MMRSession *session, NSError *error) {
-                                NSString *result = nil;
-                                if (error) {
-                                    result = [error localizedDescription];
-                                } else {
-                                    result = @"Success";
-                                }
-                                NSLog(@"%@", result);
-        }];
+    [MMRSession openSessionWithPermissions:[self applicationPermissions]
+                             loginBehavior:MMRSessionLoginInAppWebView
+                        completionsHandler:^(MMRSession *session, NSError *error) {
+                            NSString *result = nil;
+                            if (error) {
+                                result = [error localizedDescription];
+                            } else {
+                                result = @"Success";
+                            }
+                            NSLog(@"%@", result);
+                        }];
+}
+```
+
+Open session with username and password: 
+
+```Objective-C
+if (![MMRSession currentSession].isValid) {
+    [MMRSession  openSessionForUsername:@"john.appleseed@mail.ru"
+                               password:@"123qwe456"
+                            permissions:@[@"stream"]
+                     completionsHandler:^(MMRSession *session, NSError *error) {
+                         NSString *result = nil;
+                         if (error) {
+                             result = [error localizedDescription];
+                         } else {
+                             result = @"Success";
+                         }
+                         NSLog(@"%@", result);
+                     }];
 }
 ```
 
