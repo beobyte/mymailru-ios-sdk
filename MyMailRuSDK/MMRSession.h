@@ -51,6 +51,13 @@ typedef void (^MMRSessionRefreshTokenHandler)(NSError *error);
                    permissions:(NSArray *)permissions
             completionsHandler:(MMRSessionOpenHandler)handler;
 
++ (void)openSessionWithAccessToken:(NSString *)accessToken
+                      refreshToken:(NSString *)refreshToken
+                            userId:(NSString *)userId
+                       permissions:(NSArray *)permissions
+                    expirationDate:(NSDate *)expirationDate
+                completionsHandler:(MMRSessionOpenHandler)handler;
+
 + (MMRSession *)currentSession;
 
 + (void)setRedirectURI:(NSString *)redirectURI;

@@ -159,6 +159,29 @@ static NSString *mmr_redirectURI = nil;
                            }];
 }
 
++ (void)openSessionWithAccessToken:(NSString *)accessToken
+                      refreshToken:(NSString *)refreshToken
+                            userId:(NSString *)userId
+                       permissions:(NSArray *)permissions
+                    expirationDate:(NSDate *)expirationDate
+                completionsHandler:(MMRSessionOpenHandler)handler {
+    mmr_currentSession = [[MMRSession alloc] init];
+    mmr_currentSession.permissions = permissions;
+    mmr_currentSession.accessToken = accessToken;
+    mmr_currentSession.refreshToken = refreshToken copy;
+    mmr_currentSession.expirationDate = expirationDate;
+    mmr_currentSession.userId = userId;
+    
+    if (mmr_currentSession.isValid) {
+        [mmr_currentSession cacheTokenInformation];
+        if (handler) handler(mmr_currentSession, nil);
+    } else {
+        [mmr_currentSession refreshTokenWithCompletionHandler:^(NSError *error) {
+            if (handler) handler(mmr_currentSession, error);
+        }];
+    }
+}
+
 + (MMRSession *)currentSession {
     return mmr_currentSession;
 }
