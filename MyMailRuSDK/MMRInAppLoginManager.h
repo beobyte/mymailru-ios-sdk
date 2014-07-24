@@ -1,4 +1,4 @@
-// MyMailRu.m
+//  MMRLoginView.h
 //
 // Copyright (c) 2014 Anton Grachev
 //
@@ -20,28 +20,20 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+#import <Foundation/Foundation.h>
 
-#import "MyMailRu.h"
+@protocol MMRInAppLoginDelegate <NSObject>
+@optional
+- (void)userAuthorizedWithSessionParams:(NSDictionary *)params error:(NSError *)error; // for web view
+- (void)userDidEnterLogin:(NSString *)login andPassword:(NSString *)password; // for alert view
+- (void)userDidCloseLoginView;
+@end
 
-static NSString *mmr_appId = nil;
-static NSString *mmr_appPrivateKey = nil;
+@interface MMRInAppLoginManager : NSObject
 
-@implementation MyMailRu
+@property (weak, nonatomic) id<MMRInAppLoginDelegate> delegate;
 
-+ (void)setAppId:(NSString *)appId {
-    mmr_appId = [appId copy];
-}
-
-+ (NSString *)appId {
-    return mmr_appId ?: @"";
-}
-
-+ (void)setAppPrivateKey:(NSString *)appPrivateKey {
-    mmr_appPrivateKey = [appPrivateKey copy];
-}
-
-+ (NSString *)appPrivateKey {
-    return mmr_appPrivateKey ?: @"";
-}
+- (void)showLoginAndPasswordView;
+- (void)showLoginWebViewWithURL:(NSURL *)url;
 
 @end

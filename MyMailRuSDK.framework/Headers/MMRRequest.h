@@ -1,4 +1,4 @@
-// MyMailRu.m
+// MMRequest.h
 //
 // Copyright (c) 2014 Anton Grachev
 //
@@ -21,27 +21,19 @@
 // THE SOFTWARE.
 
 
-#import "MyMailRu.h"
+#import <Foundation/Foundation.h>
 
-static NSString *mmr_appId = nil;
-static NSString *mmr_appPrivateKey = nil;
+typedef void (^MMRRequestHandler)(id json, NSError *error);
 
-@implementation MyMailRu
+@interface MMRRequest : NSObject
 
-+ (void)setAppId:(NSString *)appId {
-    mmr_appId = [appId copy];
-}
++ (MMRRequest *)requestForUsersInfoWithParams:(NSDictionary *)params;
++ (MMRRequest *)requestForFriendsWithParams:(NSDictionary *)params;
++ (MMRRequest *)requestForStreamPostWithParams:(NSDictionary *)params;
++ (MMRRequest *)requestForAPIMethod:(NSString *)apiMethod
+                             params:(NSDictionary *)params
+                         HTTPMethod:(NSString *)httpMethod;
 
-+ (NSString *)appId {
-    return mmr_appId ?: @"";
-}
-
-+ (void)setAppPrivateKey:(NSString *)appPrivateKey {
-    mmr_appPrivateKey = [appPrivateKey copy];
-}
-
-+ (NSString *)appPrivateKey {
-    return mmr_appPrivateKey ?: @"";
-}
+- (void)sendWithCompletionHandler:(MMRRequestHandler)handler;
 
 @end

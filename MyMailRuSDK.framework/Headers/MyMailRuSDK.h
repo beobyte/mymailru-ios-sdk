@@ -1,4 +1,4 @@
-// MyMailRu.m
+// MyMailRuSDK.h
 //
 // Copyright (c) 2014 Anton Grachev
 //
@@ -20,28 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-
 #import "MyMailRu.h"
-
-static NSString *mmr_appId = nil;
-static NSString *mmr_appPrivateKey = nil;
-
-@implementation MyMailRu
-
-+ (void)setAppId:(NSString *)appId {
-    mmr_appId = [appId copy];
-}
-
-+ (NSString *)appId {
-    return mmr_appId ?: @"";
-}
-
-+ (void)setAppPrivateKey:(NSString *)appPrivateKey {
-    mmr_appPrivateKey = [appPrivateKey copy];
-}
-
-+ (NSString *)appPrivateKey {
-    return mmr_appPrivateKey ?: @"";
-}
-
-@end
+#import "MyMailRuSDKVersion.h"
+#import "MMRSession.h"
+#import "MMRRequest.h"

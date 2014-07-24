@@ -53,10 +53,10 @@
                       otherButtonTitles:nil] show];
 }
 
-- (IBAction)loginInApp:(id)sender {
+- (IBAction)loginInAppWebView:(id)sender {
     if (![MMRSession currentSession].isValid) {
         [MMRSession openSessionWithPermissions:[self applicationPermissions]
-                                 loginBehavior:MMRSessionLoginInApp
+                                 loginBehavior:MMRSessionLoginInAppWebView
                             completionsHandler:^(MMRSession *session, NSError *error) {
                                 NSString *result = nil;
                                 if (error) {

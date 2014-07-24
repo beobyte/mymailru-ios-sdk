@@ -23,7 +23,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="loginInApp:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="EF2-9x-WWZ"/>
+                                    <action selector="loginInAppWebView:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Prn-mm-ohO"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHt-2C-L4L">

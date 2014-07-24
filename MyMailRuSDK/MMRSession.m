@@ -28,12 +28,13 @@
 #import "MMRTokenCache.h"
 #import "MMRUtils.h"
 #import "MMRErrors.h"
+#import "MMRInAppLoginManager.h"
 
-static NSString* const MMRAuthURL = @"https://connect.mail.ru/oauth/authorize";
+static NSString* const MMROAuthAuthorizeURL = @"https://connect.mail.ru/oauth/authorize";
 static NSString* const MMRRedirectURL = @"http://connect.mail.ru/oauth/success.html";
-static NSString* const MMRRefreshTokenBaseURL = @"https://appsmail.ru/oauth/token";
+static NSString* const MMROAuthTokenURL = @"https://appsmail.ru/oauth/token";
 
-@interface MMRSession () <UIWebViewDelegate>
+@interface MMRSession () <UIWebViewDelegate, MMRInAppLoginDelegate>
 @property (readwrite, copy, nonatomic) NSString *accessToken;
 @property (readwrite, copy, nonatomic) NSString *refreshToken;
 @property (readwrite, copy, nonatomic) NSDate *expirationDate;
@@ -41,6 +42,7 @@ static NSString* const MMRRefreshTokenBaseURL = @"https://appsmail.ru/oauth/toke
 @property (readwrite, copy, nonatomic) NSArray *permissions;
 @property (strong, nonatomic) UIViewController *loginVC;
 @property (copy, nonatomic) MMRSessionOpenHandler openHandler;
+@property (strong, nonatomic) MMRInAppLoginManager *loginManager;
 @end
 
 @implementation MMRSession
@@ -79,28 +81,82 @@ static NSString *mmr_redirectURI = nil;
     
     if (mmr_currentSession.isValid) {
         if (handler) handler(mmr_currentSession, nil);
-    } else {
+    } else if (behavior != MMRSessionLoginWithCachedToken) {
+        if (mmr_redirectURI == nil) [MMRSession setRedirectURI:MMRRedirectURL];
+
         mmr_currentSession.openHandler = handler;
         mmr_currentSession.permissions = permissions;
         
         NSMutableDictionary* params = [@{@"client_id" : [MyMailRu appId],
                                          @"response_type" : @"token",
                                          @"display" : @"mobile",
-                                         @"redirect_uri" :  mmr_redirectURI ?: MMRRedirectURL} mutableCopy];
+                                         @"redirect_uri" :  [MMRSession redirectURI]} mutableCopy];
         
         if (permissions) {
             NSString *scope = [permissions componentsJoinedByString:@" "];
             params[@"scope"] = scope;
         }
         
-        NSString *appURL = [NSString stringWithFormat:@"%@?%@", MMRAuthURL, [MMRUtils URLEncodedStringFromParams:params]];
         
-        if (behavior == MMRSessionLoginInApp) {
-            [mmr_currentSession inAppLoginWithURL:appURL];
-        } else if (behavior == MMRSessionLoginInSafari) {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:appURL]];
+        MMRInAppLoginManager *loginManager = [[MMRInAppLoginManager alloc] init];
+        loginManager.delegate = mmr_currentSession;
+        mmr_currentSession.loginManager = loginManager;
+        
+        if (behavior == MMRSessionLoginInAppLoginAndPasswordView) {
+            [mmr_currentSession.loginManager showLoginAndPasswordView];
+        } else  {
+            NSString *appURL = [NSString stringWithFormat:@"%@?%@", MMROAuthAuthorizeURL, [MMRUtils URLEncodedStringFromParams:params]];
+            NSURL *url = [NSURL URLWithString:appURL];
+            
+            if (behavior == MMRSessionLoginInAppWebView) [loginManager showLoginWebViewWithURL:url];
+            else if (behavior == MMRSessionLoginInSafari) [[UIApplication sharedApplication] openURL:url];
         }
     }
+}
+
++ (void)openSessionForUsername:(NSString *)username password:(NSString *)password permissions:(NSArray *)permissions completionsHandler:(MMRSessionOpenHandler)handler {
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    request.HTTPMethod = @"POST";
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"grant_type"] = @"password";
+    params[@"client_id"] = [MyMailRu appId];
+    params[@"client_secret"] = [MyMailRu appPrivateKey];
+    params[@"username"] = username ?: @"";
+    params[@"password"] = password ?: @"";
+    if (permissions) {
+        NSString *scope = [permissions componentsJoinedByString:@" "];
+        params[@"scope"] = scope;
+    }
+    
+    request.URL = [NSURL URLWithString:MMROAuthTokenURL];
+    request.HTTPBody = [[MMRUtils URLEncodedStringFromParams:params] dataUsingEncoding:NSUTF8StringEncoding];
+    
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                               if (connectionError) {
+                                   if (handler) handler(nil, connectionError);
+                                   return;
+                               }
+                               
+                               NSError *jsonParsingError = nil;
+                               id result = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonParsingError];
+                               if (jsonParsingError) {
+                                   if (handler) handler(nil, jsonParsingError);
+                                   return;
+                               }
+                               
+                               NSError *error = [MMRErrors errorFromJSON:result];
+                               if (error) {
+                                   if (handler) handler(nil, error);
+                                   return;
+                               }
+                               
+                               if (!mmr_currentSession) mmr_currentSession = [[MMRSession alloc] init];
+                               [mmr_currentSession updateTokenInformationWithParams:result];
+                               if (handler) handler(mmr_currentSession, nil);
+                           }];
 }
 
 + (MMRSession *)currentSession {
@@ -134,7 +190,7 @@ static NSString *mmr_redirectURI = nil;
                                          andPrivateKey:[MyMailRu appPrivateKey]];
     params[@"sig"] = signature;
     
-    request.URL = [NSURL URLWithString:MMRRefreshTokenBaseURL];
+    request.URL = [NSURL URLWithString:MMROAuthTokenURL];
     request.HTTPBody = [[MMRUtils URLEncodedStringFromParams:params] dataUsingEncoding:NSUTF8StringEncoding];
     
     [NSURLConnection sendAsynchronousRequest:request
@@ -204,50 +260,6 @@ static NSString *mmr_redirectURI = nil;
 
 #pragma mark - Private methods
 
-- (void)inAppLoginWithURL:(NSString *)appURL {
-    self.loginVC = [[UIViewController alloc] initWithNibName:nil bundle:nil];
-    self.loginVC.view.frame = [UIScreen mainScreen].applicationFrame;
-    self.loginVC.view.backgroundColor = [UIColor blackColor];
-    self.loginVC.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    
-    UIBarButtonItem *closeButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-                                                                                 target:self
-                                                                                 action:@selector(closeLoginView:)];
-    UINavigationItem *navigationItem = [[UINavigationItem alloc] init];
-    [navigationItem setRightBarButtonItem:closeButton];
-    
-    CGRect frame = CGRectMake(0, 0, self.loginVC.view.frame.size.width, self.loginVC.view.frame.size.height);
-    UINavigationBar *navigationBar = [[UINavigationBar alloc] init];
-    frame.size = [navigationBar sizeThatFits:frame.size];
-    // if >= 7.x
-    if ([[[UIDevice currentDevice] systemVersion] compare:@"7.0" options:NSNumericSearch] != NSOrderedAscending) {
-        frame.size.height += 20;
-    }
-    
-    navigationBar.frame = frame;
-    navigationBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    navigationBar.items = [NSArray arrayWithObject:navigationItem];
-    [self.loginVC.view addSubview:navigationBar];
-    
-    CGRect webFrame = CGRectMake(0,
-                                 frame.size.height + frame.origin.y,
-                                 frame.size.width,
-                                 self.loginVC.view.frame.size.height - frame.size.height);
-    UIWebView *webView = [[UIWebView alloc] initWithFrame:webFrame];
-    webView.delegate = self;
-    webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    [self.loginVC.view addSubview:webView];
-    
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:appURL]];
-    [request setHTTPMethod:@"GET"];
-    [webView loadRequest:request];
-
-    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:self.loginVC
-                                                                                 animated:YES
-                                                                               completion:^{}];
-}
-
 - (void)updateTokenInformationWithParams:(NSDictionary *)params {
     self.refreshToken = params[@"refresh_token"];
     self.accessToken = params[@"access_token"];
@@ -267,34 +279,27 @@ static NSString *mmr_redirectURI = nil;
 	[MMRTokenCache cacheTokenInformation:info];
 }
 
-#pragma mark UIWebViewDelegate
+#pragma mark - MMRInAppLoginDelegate
 
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-    NSLog(@"%@", [request.URL absoluteString]);
-    if ([request.URL.absoluteString hasPrefix:MMRRedirectURL]) {
-        NSDictionary *params = [MMRUtils queryParametersFromURL:request.URL];
+- (void)userAuthorizedWithSessionParams:(NSDictionary *)params error:(NSError *)error {
+    if (!error) {
         [self updateTokenInformationWithParams:params];
-        [self.loginVC dismissViewControllerAnimated:YES
-                                         completion:^{
-                                             self.loginVC = nil;
-                                         }];
-        if (self.openHandler) self.openHandler(self, nil);
-        self.openHandler = nil;
     }
-    return YES;
+    if (self.openHandler) self.openHandler(self, error);
+    self.openHandler = nil;
 }
 
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    if (self.openHandler) self.openHandler(nil, error);
-    self.permissions = @[];
+- (void)userDidEnterLogin:(NSString *)login andPassword:(NSString *)password {
+    [MMRSession openSessionForUsername:login
+                              password:password
+                           permissions:self.permissions
+                    completionsHandler:^(MMRSession *session, NSError *error) {
+                        if (self.openHandler) self.openHandler(session, error);
+                        self.openHandler = nil;
+                    }];
 }
 
-- (void)closeLoginView:(id)sender {
-    [self.loginVC dismissViewControllerAnimated:YES
-                                     completion:^{
-                                         self.loginVC = nil;
-                                     }];
-    self.permissions = @[];
+- (void)userDidCloseLoginView {
     if (self.openHandler) {
         NSError *error = [MMRErrors errorForCode:MMRErrorUserCancelOperation];
         self.openHandler(nil, error);

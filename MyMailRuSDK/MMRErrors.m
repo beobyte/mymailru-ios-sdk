@@ -29,7 +29,7 @@ static NSString* const MMRErrorDomain = @"MyMailRuErrorDomain";
 
 + (NSError *)errorFromJSON:(id)json {
     if (json == nil) return [self errorForCode:MMRErrorUnknown];
-    if (![json isKindOfClass:[NSDictionary class]]) return [self errorForCode:MMRErrorUnknown];
+    if (![json isKindOfClass:[NSDictionary class]]) return nil;
     
     NSDictionary *errorInfo = json[@"error"];
 	if(errorInfo) {

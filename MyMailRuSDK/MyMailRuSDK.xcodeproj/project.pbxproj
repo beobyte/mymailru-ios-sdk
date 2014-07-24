@@ -22,6 +22,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		0A32CB641980F38C009FD963 /* MMRInAppLoginManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A32CB621980F38C009FD963 /* MMRInAppLoginManager.h */; };
+		0A32CB651980F38C009FD963 /* MMRInAppLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A32CB631980F38C009FD963 /* MMRInAppLoginManager.m */; };
 		0A5BAB2F197EC2980042F901 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FFEE7E018B9007A00391E2D /* UIKit.framework */; };
 		0A5BAB30197EC2CA0042F901 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC2FFB418B8B4F600F8D9D9 /* Foundation.framework */; };
 		0A5BAB9F197EC6120042F901 /* MMRErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A5BAB91197EC6120042F901 /* MMRErrors.h */; };
@@ -63,6 +65,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0A32CB621980F38C009FD963 /* MMRInAppLoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMRInAppLoginManager.h; sourceTree = "<group>"; };
+		0A32CB631980F38C009FD963 /* MMRInAppLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMRInAppLoginManager.m; sourceTree = "<group>"; };
 		0A5BAB91197EC6120042F901 /* MMRErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMRErrors.h; sourceTree = "<group>"; };
 		0A5BAB92197EC6120042F901 /* MMRErrors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMRErrors.m; sourceTree = "<group>"; };
 		0A5BAB93197EC6120042F901 /* MMRRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMRRequest.h; sourceTree = "<group>"; };
@@ -112,6 +116,8 @@
 				0A5BAB9C197EC6120042F901 /* MyMailRu.m */,
 				0A5BAB9D197EC6120042F901 /* MyMailRuSDK.h */,
 				0A5BAB9E197EC6120042F901 /* MyMailRuSDKVersion.h */,
+				0A32CB621980F38C009FD963 /* MMRInAppLoginManager.h */,
+				0A32CB631980F38C009FD963 /* MMRInAppLoginManager.m */,
 			);
 			name = MyMailRuSDK;
 			sourceTree = "<group>";
@@ -152,6 +158,7 @@
 				0A5BABA3197EC6120042F901 /* MMRSession.h in Headers */,
 				0A5BABAC197EC6120042F901 /* MyMailRuSDKVersion.h in Headers */,
 				0A5BABA9197EC6120042F901 /* MyMailRu.h in Headers */,
+				0A32CB641980F38C009FD963 /* MMRInAppLoginManager.h in Headers */,
 				0A5BABA1197EC6120042F901 /* MMRRequest.h in Headers */,
 				0A5BABAB197EC6120042F901 /* MyMailRuSDK.h in Headers */,
 				0A5BAB9F197EC6120042F901 /* MMRErrors.h in Headers */,
@@ -246,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A5BABA2197EC6120042F901 /* MMRRequest.m in Sources */,
+				0A32CB651980F38C009FD963 /* MMRInAppLoginManager.m in Sources */,
 				0A5BABA0197EC6120042F901 /* MMRErrors.m in Sources */,
 				0A5BABA4197EC6120042F901 /* MMRSession.m in Sources */,
 				0A5BABAA197EC6120042F901 /* MyMailRu.m in Sources */,
