@@ -1,4 +1,4 @@
-//  MMRLoginView.h
+// MMRInAppLoginManager.m
 //
 // Copyright (c) 2014 Anton Grachev
 //

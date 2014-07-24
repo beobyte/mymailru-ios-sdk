@@ -168,7 +168,7 @@ static NSString *mmr_redirectURI = nil;
     mmr_currentSession = [[MMRSession alloc] init];
     mmr_currentSession.permissions = permissions;
     mmr_currentSession.accessToken = accessToken;
-    mmr_currentSession.refreshToken = refreshToken copy;
+    mmr_currentSession.refreshToken = refreshToken;
     mmr_currentSession.expirationDate = expirationDate;
     mmr_currentSession.userId = userId;
     
