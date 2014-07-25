@@ -1,13 +1,13 @@
 //
-//  ViewController.h
+//  UserViewController.h
 //  MyMailRuSDKExample
 //
 //  Created by Anton Grachev on 25.07.14.
 //  Copyright (c) 2014 Anton Grachev. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "ViewController.h"
 
-@interface ViewController : UITableViewController
+@interface UserViewController : UIViewController
 
 @end

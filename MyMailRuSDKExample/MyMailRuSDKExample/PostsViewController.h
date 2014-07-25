@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  PostsViewController.h
 //  MyMailRuSDKExample
 //
 //  Created by Anton Grachev on 25.07.14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UITableViewController
+@interface PostsViewController : UITableViewController
 
 @end

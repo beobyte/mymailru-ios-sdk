@@ -2,12 +2,11 @@
 //  ViewController.m
 //  MyMailRuSDKExample
 //
-//  Created by Anton Grachev on 22.07.14.
+//  Created by Anton Grachev on 25.07.14.
 //  Copyright (c) 2014 Anton Grachev. All rights reserved.
 //
 
 #import "ViewController.h"
-
 #import <MyMailRuSDK/MyMailRuSDK.h>
 
 @interface ViewController ()
@@ -15,6 +14,15 @@
 @end
 
 @implementation ViewController
+
+- (id)initWithStyle:(UITableViewStyle)style
+{
+    self = [super initWithStyle:style];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
@@ -41,6 +49,55 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    switch (indexPath.row) {
+        case 0:
+            [self loginInAppWebView];
+            break;
+            
+        case 1:
+            [self loginInAppPasswordView];
+            break;
+            
+        case 2:
+            [self loginInSafari];
+            break;
+            
+        case 3:
+            [self performSegueWithIdentifier:@"userInfoSegue" sender:tableView];
+            break;
+            
+        case 4:
+            [self performSegueWithIdentifier:@"friendsSegue" sender:tableView];
+            break;
+            
+        case 5:
+            [self sendTestPost];
+            break;
+            
+        case 6:
+            [self performSegueWithIdentifier:@"postsSegue" sender:tableView];
+            break;
+            
+        case 7:
+            [self refreshAccessToken];
+            break;
+            
+        case 8:
+            [self logout];
+            break;
+            
+        case 9:
+            [self logoutAndDeleteCache];
+            break;
+            
+        default:
+            break;
+    }
+}
+
 - (NSArray *)applicationPermissions {
     return @[@"stream", @"photos"];
 }
@@ -53,7 +110,7 @@
                       otherButtonTitles:nil] show];
 }
 
-- (IBAction)loginInAppWebView:(id)sender {
+- (void)loginInAppWebView {
     if (![MMRSession currentSession].isValid) {
         [MMRSession openSessionWithPermissions:[self applicationPermissions]
                                  loginBehavior:MMRSessionLoginInAppWebView
@@ -80,7 +137,35 @@
     }
 }
 
-- (IBAction)loginInSafari:(id)sender {
+- (void)loginInAppPasswordView {
+    if (![MMRSession currentSession].isValid) {
+        [MMRSession openSessionWithPermissions:[self applicationPermissions]
+                                 loginBehavior:MMRSessionLoginInAppLoginAndPasswordView
+                            completionsHandler:^(MMRSession *session, NSError *error) {
+                                NSString *result = nil;
+                                if (error) {
+                                    result = [error localizedDescription];
+                                } else {
+                                    result = @"Success";
+                                }
+                                NSLog(@"%@", result);
+                                [[[UIAlertView alloc] initWithTitle:@"Login"
+                                                            message:result
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil] show];
+                            }];
+    } else {
+        [[[UIAlertView alloc] initWithTitle:@"Login"
+                                    message:@"You are already logged in."
+                                   delegate:nil
+                          cancelButtonTitle:@"Ok"
+                          otherButtonTitles:nil] show];
+    }
+    
+}
+
+- (IBAction)loginInSafari {
     if (![MMRSession currentSession].isValid) {
 #warning Don't forget to add URL scheme in main plist (mm<#YOUR APP ID>)
         // Custom URL should provide redirect to custom scheme: mm<#YOUR APP ID>://authorize, for example.
@@ -111,52 +196,7 @@
     
 }
 
-- (IBAction)getUserInfo:(id)sender {
-    if (![MMRSession currentSession].isValid) {
-        [self showAlertForInvalidSession];
-        return;
-    }
-    
-    MMRRequest *request = [MMRRequest requestForUsersInfoWithParams:@{@"uids" : [MMRSession currentSession].userId}];
-    [request sendWithCompletionHandler:^(id json, NSError *error) {
-        NSString *result = nil;
-        if (error) {
-            result = [error localizedDescription];
-        } else {
-            result = [NSString stringWithFormat:@"%@", json];
-        }
-        NSLog(@"%@", result);
-        [[[UIAlertView alloc] initWithTitle:@"Get user info"
-                                    message:result
-                                   delegate:nil
-                          cancelButtonTitle:@"Ok"
-                          otherButtonTitles:nil] show];
-    }];
-}
-- (IBAction)getFriends:(id)sender {
-    if (![MMRSession currentSession].isValid) {
-        [self showAlertForInvalidSession];
-        return;
-    }
-    
-    MMRRequest *request = [MMRRequest requestForFriendsWithParams:@{@"ext" : @"1"}];
-    [request sendWithCompletionHandler:^(id json, NSError *error) {
-        NSString *result = nil;
-        if (error) {
-            result = [error localizedDescription];
-        } else {
-            result = [NSString stringWithFormat:@"%@", json];
-        }
-        NSLog(@"%@", result);
-        [[[UIAlertView alloc] initWithTitle:@"Get friends"
-                                    message:result
-                                   delegate:nil
-                          cancelButtonTitle:@"Ok"
-                          otherButtonTitles:nil] show];
-    }];
-}
-
-- (IBAction)sendPost:(id)sender {
+- (IBAction)sendTestPost {
     if (![MMRSession currentSession].isValid) {
         [self showAlertForInvalidSession];
         return;
@@ -187,33 +227,7 @@
     }];
 }
 
-- (IBAction)getPosts:(id)sender {
-    if (![MMRSession currentSession].isValid) {
-        [self showAlertForInvalidSession];
-        return;
-    }
-    
-    MMRRequest *request = [MMRRequest requestForAPIMethod:@"stream.get"
-                                                   params:@{@"limit" : @"5"}
-                                               HTTPMethod:@"GET"];
-    [request sendWithCompletionHandler:^(id json, NSError *error) {
-        NSString *result = nil;
-        if (error) {
-            result = [error localizedDescription];
-        } else {
-            result = [NSString stringWithFormat:@"%@", json];
-        }
-        NSLog(@"%@", result);
-        [[[UIAlertView alloc] initWithTitle:@"Get posts"
-                                    message:result
-                                   delegate:nil
-                          cancelButtonTitle:@"Ok"
-                          otherButtonTitles:nil] show];
-    }];
-    
-}
-
-- (IBAction)refreshAccessToken:(id)sender {
+- (IBAction)refreshAccessToken {
     if (![MMRSession currentSession].isValid) {
         [self showAlertForInvalidSession];
         return;
@@ -236,11 +250,11 @@
     }];
 }
 
-- (IBAction)logout:(id)sender {
+- (IBAction)logout {
     [[MMRSession currentSession] close];
 }
 
-- (IBAction)logoutAndDeleteCache:(id)sender {
+- (IBAction)logoutAndDeleteCache {
     [[MMRSession currentSession] closeAndClearTokenInformation];
 }
 

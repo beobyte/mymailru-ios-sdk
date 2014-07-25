@@ -14,12 +14,15 @@
 		0A5BAB67197EC44F0042F901 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BAB66197EC44F0042F901 /* main.m */; };
 		0A5BAB6B197EC44F0042F901 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BAB6A197EC44F0042F901 /* AppDelegate.m */; };
 		0A5BAB6E197EC44F0042F901 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A5BAB6C197EC44F0042F901 /* Main.storyboard */; };
-		0A5BAB71197EC44F0042F901 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BAB70197EC44F0042F901 /* ViewController.m */; };
 		0A5BAB73197EC44F0042F901 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A5BAB72197EC44F0042F901 /* Images.xcassets */; };
 		0A5BAB7A197EC44F0042F901 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A5BAB79197EC44F0042F901 /* XCTest.framework */; };
 		0A5BAB7B197EC44F0042F901 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A5BAB5A197EC44F0042F901 /* Foundation.framework */; };
 		0A5BAB7C197EC44F0042F901 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A5BAB5E197EC44F0042F901 /* UIKit.framework */; };
 		0A5BAB90197EC4FE0042F901 /* MyMailRuSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A5BAB8F197EC4FE0042F901 /* MyMailRuSDK.framework */; };
+		0A623F3219823A8B00FF3D06 /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A623F3119823A8B00FF3D06 /* UserViewController.m */; };
+		0A623F3519823D1400FF3D06 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A623F3419823D1400FF3D06 /* ViewController.m */; };
+		0A684C881982481A00E64BF2 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A684C871982481A00E64BF2 /* FriendsViewController.m */; };
+		0A684C8B19824C0000E64BF2 /* PostsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A684C8A19824C0000E64BF2 /* PostsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,12 +47,18 @@
 		0A5BAB69197EC44F0042F901 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0A5BAB6A197EC44F0042F901 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		0A5BAB6D197EC44F0042F901 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0A5BAB6F197EC44F0042F901 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		0A5BAB70197EC44F0042F901 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		0A5BAB72197EC44F0042F901 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0A5BAB78197EC44F0042F901 /* MyMailRuSDKExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyMailRuSDKExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A5BAB79197EC44F0042F901 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		0A5BAB8F197EC4FE0042F901 /* MyMailRuSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MyMailRuSDK.framework; path = ../MyMailRuSDK.framework; sourceTree = "<group>"; };
+		0A623F3019823A8B00FF3D06 /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = "<group>"; };
+		0A623F3119823A8B00FF3D06 /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewController.m; sourceTree = "<group>"; };
+		0A623F3319823D1400FF3D06 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		0A623F3419823D1400FF3D06 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		0A684C861982481A00E64BF2 /* FriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsViewController.h; sourceTree = "<group>"; };
+		0A684C871982481A00E64BF2 /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
+		0A684C8919824C0000E64BF2 /* PostsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostsViewController.h; sourceTree = "<group>"; };
+		0A684C8A19824C0000E64BF2 /* PostsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,8 +122,14 @@
 				0A5BAB69197EC44F0042F901 /* AppDelegate.h */,
 				0A5BAB6A197EC44F0042F901 /* AppDelegate.m */,
 				0A5BAB6C197EC44F0042F901 /* Main.storyboard */,
-				0A5BAB6F197EC44F0042F901 /* ViewController.h */,
-				0A5BAB70197EC44F0042F901 /* ViewController.m */,
+				0A623F3319823D1400FF3D06 /* ViewController.h */,
+				0A623F3419823D1400FF3D06 /* ViewController.m */,
+				0A623F3019823A8B00FF3D06 /* UserViewController.h */,
+				0A623F3119823A8B00FF3D06 /* UserViewController.m */,
+				0A684C861982481A00E64BF2 /* FriendsViewController.h */,
+				0A684C871982481A00E64BF2 /* FriendsViewController.m */,
+				0A684C8919824C0000E64BF2 /* PostsViewController.h */,
+				0A684C8A19824C0000E64BF2 /* PostsViewController.m */,
 				0A5BAB72197EC44F0042F901 /* Images.xcassets */,
 				0A5BAB61197EC44F0042F901 /* Supporting Files */,
 			);
@@ -228,8 +243,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A5BAB71197EC44F0042F901 /* ViewController.m in Sources */,
+				0A684C881982481A00E64BF2 /* FriendsViewController.m in Sources */,
+				0A623F3219823A8B00FF3D06 /* UserViewController.m in Sources */,
+				0A684C8B19824C0000E64BF2 /* PostsViewController.m in Sources */,
 				0A5BAB6B197EC44F0042F901 /* AppDelegate.m in Sources */,
+				0A623F3519823D1400FF3D06 /* ViewController.m in Sources */,
 				0A5BAB67197EC44F0042F901 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

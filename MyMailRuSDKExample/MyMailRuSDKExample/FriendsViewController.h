@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  FriendsViewController.h
 //  MyMailRuSDKExample
 //
 //  Created by Anton Grachev on 25.07.14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UITableViewController
+@interface FriendsViewController : UITableViewController
 
 @end
