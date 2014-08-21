@@ -40,7 +40,6 @@ static NSString* const MMROAuthTokenURL = @"https://appsmail.ru/oauth/token";
 @property (readwrite, copy, nonatomic) NSDate *expirationDate;
 @property (readwrite, copy, nonatomic) NSString *userId;
 @property (readwrite, copy, nonatomic) NSArray *permissions;
-@property (strong, nonatomic) UIViewController *loginVC;
 @property (copy, nonatomic) MMRSessionOpenHandler openHandler;
 @property (strong, nonatomic) MMRInAppLoginManager *loginManager;
 @end
@@ -207,10 +206,7 @@ static NSString *mmr_redirectURI = nil;
     params[@"client_id"] = [MyMailRu appId];
     params[@"client_secret"] = [MyMailRu appPrivateKey];
     params[@"refresh_token"] = self.refreshToken;
-    NSString *signature = [MMRUtils signatureForParams:params
-                                       withAccessToken:self.accessToken
-                                                userID:self.userId
-                                         andPrivateKey:[MyMailRu appPrivateKey]];
+    NSString *signature = [MMRUtils signatureForParams:params userID:self.userId andPrivateKey:[MyMailRu appPrivateKey]];
     params[@"sig"] = signature;
     
     request.URL = [NSURL URLWithString:MMROAuthTokenURL];
@@ -264,7 +260,7 @@ static NSString *mmr_redirectURI = nil;
 	for(NSString * param in [url.query componentsSeparatedByString:@"&"]) {
 		NSArray * elements = [param componentsSeparatedByString:@"="];
 		if (elements.count != 2) continue;
-		[newAccessData setObject:[elements objectAtIndex:1] forKey:[elements objectAtIndex:0]];
+        newAccessData[elements[0]] = elements[1];
 	}
     
 	[self updateTokenInformationWithParams:newAccessData];

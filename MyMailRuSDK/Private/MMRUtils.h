@@ -27,10 +27,8 @@
 
 + (NSString *)URLEncodedStringFromParams:(NSDictionary *)params;
 + (NSDictionary *)queryParametersFromURL:(NSURL *)url;
-+ (NSString *)signatureForParams:(NSDictionary *)params
-                 withAccessToken:(NSString *)accessToken
-                          userID:(NSString *)userId
-                   andPrivateKey:(NSString *)privateKey;
+
++ (NSString *)signatureForParams:(NSDictionary *)params userID:(NSString *)userId andPrivateKey:(NSString *)privateKey;
 + (NSString *)md5FromString:(NSString *)string;
 
 @end

@@ -40,64 +40,54 @@ static NSString* const MMRErrorDomain = @"MyMailRuErrorDomain";
 }
 
 + (NSError *)errorForCode:(MMRErrorCodes)errorCode {
-    NSDictionary *userInfo = @{};
+    NSDictionary *userInfo;
     switch (errorCode) {
         case MMRErrorUnknown:
-            userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-                        @"Unknown error: Please resubmit the request.", NSLocalizedDescriptionKey, nil];
+            userInfo = @{NSLocalizedDescriptionKey : @"Unknown error: Please resubmit the request."};
             break;
 
         case MMRErrorUnknownMethodCalled:
-            userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-                        @"Unknown method called.", NSLocalizedDescriptionKey, nil];
+            userInfo = @{NSLocalizedDescriptionKey : @"Unknown method called."};
             break;
             
         case MMRErrorServiceUnavailable:
-            userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-                        @"Service Unavailable. Please try again later.", NSLocalizedDescriptionKey, nil];
+            userInfo = @{NSLocalizedDescriptionKey : @"Service Unavailable. Please try again later."};
             break;
             
         case MMRErrorMethodDeprecated:
-            userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-                        @"Method is deprecated.", NSLocalizedDescriptionKey, nil];
+            userInfo = @{NSLocalizedDescriptionKey : @"Method is deprecated."};
             break;
             
         case MMRErrorUserAuthorizationFailed:
-            userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-                        @"User authorization failed: the session key or uid is incorrect.", NSLocalizedDescriptionKey, nil];
+            userInfo = @{NSLocalizedDescriptionKey : @"User authorization failed: the session key or uid is incorrect."};
             break;
             
         case MMRErrorParameterMissingOrInvalid:
-            userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-                        @"One of the parameters specified is missing or invalid.", NSLocalizedDescriptionKey, nil];
+            userInfo = @{NSLocalizedDescriptionKey : @"One of the parameters specified is missing or invalid."};
             break;
             
         case MMRErrorApplicationLookupFailed:
-            userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-                        @"Application lookup failed: the application id is not correct.", NSLocalizedDescriptionKey, nil];
+            userInfo = @{NSLocalizedDescriptionKey : @"Application lookup failed: the application id is not correct."};
             break;
             
         case MMRErrorIncorrectSignature:
-            userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-                        @"Incorrect signature.", NSLocalizedDescriptionKey, nil];
+            userInfo = @{NSLocalizedDescriptionKey : @"Incorrect signature."};
             break;
             
         case MMRErrorApplicationNotInstalledForUser:
-            userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-                        @"Permission error: the application does not have permission to perform this action.", NSLocalizedDescriptionKey, nil];
+            userInfo = @{NSLocalizedDescriptionKey : @"Permission error: the application does not have permission to perform this action."};
             break;
             
         case MMRErrorPermissionError:
-            userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-                        @"Application is not installed for this user.", NSLocalizedDescriptionKey, nil];
+            userInfo = @{NSLocalizedDescriptionKey : @"Application is not installed for this user."};
             break;
 
         case MMRErrorUserCancelOperation:
-            userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-                        @"User cancel this operation.", NSLocalizedDescriptionKey, nil];
+            userInfo = @{NSLocalizedDescriptionKey : @"User cancel this operation."};
             break;
             
         default:
+            userInfo = @{};
             break;
     }
     return [NSError errorWithDomain:MMRErrorDomain code:errorCode userInfo:userInfo];

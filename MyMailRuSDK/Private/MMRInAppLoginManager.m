@@ -56,7 +56,7 @@
     
     navigationBar.frame = frame;
     navigationBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    navigationBar.items = [NSArray arrayWithObject:navigationItem];
+    navigationBar.items = @[navigationItem];
     [self.loginVC.view addSubview:navigationBar];
     
     CGRect webFrame = CGRectMake(0,

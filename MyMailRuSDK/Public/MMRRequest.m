@@ -63,10 +63,7 @@ static NSString* const kMMRAPIBaseURL = @"http://www.appsmail.ru/platform/api";
 
     NSMutableDictionary *paramsForSign = [NSMutableDictionary dictionaryWithDictionary:params];
     [paramsForSign addEntriesFromDictionary:requestParams];
-    NSString *signature = [MMRUtils signatureForParams:paramsForSign
-                                       withAccessToken:[MMRSession currentSession].accessToken
-                                                userID:[MMRSession currentSession].userId
-                                         andPrivateKey:[MyMailRu appPrivateKey]];
+    NSString *signature = [MMRUtils signatureForParams:paramsForSign userID:[MMRSession currentSession].userId andPrivateKey:[MyMailRu appPrivateKey]];
     requestParams[@"sig"] = signature;
     
     NSString *APIMethod = [apiMethod stringByReplacingOccurrencesOfString:@"." withString:@"/"];
