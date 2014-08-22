@@ -1,18 +1,19 @@
 MyMailRu SDK for iOS
 ==========
 
-iOS library for working with my.mail.ru REST API. You can use it for authentication in this social network and all others API methods. See REST API methods descriptions [here](http://api.mail.ru/docs/) for details.
+iOS framework for working with my.mail.ru (мой мир@mail.ru) REST API. You can use it for authentication in this social network and all others API methods. See REST API methods descriptions [here](http://api.mail.ru/docs/) for details.
 
 ### Installation
-
-Drag and drop all sources from MyMailRuSDK directory into your project (MyMailRuSDK.xcodeproj not required).
 
 Link your project with the following frameworks:
 
 - UIKit.framework
 - CommonCrypto.framework
 
-Another way is to open MyMailRuSDK.xcodeproj and built a framework with 'MyMailRuSDK Framework' target. Framework will be created in root directory of repo.
+
+Drag and drop all sources from MyMailRuSDK directory into your project (MyMailRuSDK.xcodeproj not required).
+
+Another way is to already compiled framework from zip.
 
 MyMailRu SDK requires iOS 5+ and built with ARC.
 
