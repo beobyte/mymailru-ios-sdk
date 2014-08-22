@@ -29,11 +29,11 @@
 + (NSString *)URLEncodedStringFromParams:(NSDictionary *)params {
     NSMutableArray *pairs = [NSMutableArray array];
 	for (NSString *key in [params allKeys]) {
-		NSString* escapedValue = (__bridge NSString *)CFURLCreateStringByAddingPercentEscapes(NULL,
-                                                                                              (CFStringRef) params[key],
-                                                                                              NULL,
-                                                                                              (CFStringRef)@"!*'();:@&=+$,/?%#[]",
-                                                                                              kCFStringEncodingUTF8);
+        NSString *escapedValue = (__bridge_transfer NSString *) CFURLCreateStringByAddingPercentEscapes(NULL,
+                (__bridge CFStringRef) params[key],
+                NULL,
+                (CFStringRef) @"!*'();:@&=+$,/?%#[]",
+                kCFStringEncodingUTF8);
         
 		[pairs addObject:[NSString stringWithFormat:@"%@=%@", key, escapedValue]];
 	}
@@ -57,7 +57,7 @@
 + (NSString *)signatureForParams:(NSDictionary *)params userID:(NSString *)userId andPrivateKey:(NSString *)privateKey {
     NSArray *sortedKeys = [[params allKeys] sortedArrayUsingSelector:@selector(compare:)];
 	NSMutableString *signatureString = [NSMutableString stringWithString:userId];
-	for (int i =0; i<sortedKeys.count; i++){
+	for (NSUInteger i = 0; i < sortedKeys.count; i++){
 		NSString *key = sortedKeys[i];
 		[signatureString appendString:[NSString stringWithFormat:@"%@=%@", key, [params valueForKey:key]]];
 	}
