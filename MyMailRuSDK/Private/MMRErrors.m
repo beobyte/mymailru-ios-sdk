@@ -33,8 +33,14 @@ static NSString* const MMRErrorDomain = @"MyMailRuErrorDomain";
     
     NSDictionary *errorInfo = json[@"error"];
 	if(errorInfo) {
-		NSInteger code = [errorInfo[@"error_code"] integerValue];
-		return [self errorForCode:code];
+        if ([errorInfo isKindOfClass:[NSDictionary class]]) {
+            NSInteger code = [errorInfo[@"error_code"] integerValue];
+            return [self errorForCode:(MMRErrorCodes) code];
+        } else {
+            return [NSError errorWithDomain:MMRErrorDomain
+                                       code:MMRErrorUnknown
+                                   userInfo:@{NSLocalizedDescriptionKey : errorInfo}];
+        }
 	}
     return nil;
 }
