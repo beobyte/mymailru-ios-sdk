@@ -5,6 +5,6 @@
       location = "group:MyMailRuSDK/MyMailRuSDK.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:MyMailRuSDKExample/MyMailRuSDKExample.xcodeproj">
+      location = "group:MyMailRuSDK/../MyMailRuSDKExample/MyMailRuSDKExample.xcodeproj">
    </FileRef>
 </Workspace>

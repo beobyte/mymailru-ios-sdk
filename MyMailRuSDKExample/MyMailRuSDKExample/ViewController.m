@@ -29,7 +29,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-#warning Don't forget to change this parameters for ypur app
+#warning Don't forget to change this parameters for your app
     [MyMailRu setAppId:@"717574"];
     [MyMailRu setAppPrivateKey:@"4de201eec260ac34ac0d8bac49eb4080"];
     [MMRSession openSessionWithPermissions:[self applicationPermissions]
