@@ -34,7 +34,7 @@
     [MyMailRu setAppPrivateKey:@"4de201eec260ac34ac0d8bac49eb4080"];
     [MMRSession openSessionWithPermissions:[self applicationPermissions]
                              loginBehavior:MMRSessionLoginWithCachedToken
-                        completionsHandler:^(MMRSession *session, NSError *error) {
+                        completionsHandler:^(UIViewController *authViewController, MMRSession *session, NSError *error) {
                             if (!error) {
                                 NSLog(@"Session silent open successfully");
                             } else {
@@ -54,42 +54,38 @@
     
     switch (indexPath.row) {
         case 0:
-            [self loginInAppWebView];
+            [self loginWithAuthController];
             break;
             
         case 1:
-            [self loginInAppPasswordView];
-            break;
-            
-        case 2:
             [self loginInSafari];
             break;
             
-        case 3:
+        case 2:
             [self performSegueWithIdentifier:@"userInfoSegue" sender:tableView];
             break;
             
-        case 4:
+        case 3:
             [self performSegueWithIdentifier:@"friendsSegue" sender:tableView];
             break;
             
-        case 5:
+        case 4:
             [self sendTestPost];
             break;
             
-        case 6:
+        case 5:
             [self performSegueWithIdentifier:@"postsSegue" sender:tableView];
             break;
             
-        case 7:
+        case 6:
             [self refreshAccessToken];
             break;
             
-        case 8:
+        case 7:
             [self logout];
             break;
             
-        case 9:
+        case 8:
             [self logoutAndDeleteCache];
             break;
             
@@ -110,11 +106,18 @@
                       otherButtonTitles:nil] show];
 }
 
-- (void)loginInAppWebView {
+- (void)loginWithAuthController {
     if (![MMRSession currentSession].isValid) {
         [MMRSession openSessionWithPermissions:[self applicationPermissions]
-                                 loginBehavior:MMRSessionLoginInAppWebView
-                            completionsHandler:^(MMRSession *session, NSError *error) {
+                                 loginBehavior:MMRSessionLoginWithAuthorizationController
+                            completionsHandler:^(UIViewController *authViewController, MMRSession *session, NSError *error) {
+                                if (authViewController) {
+                                    [self presentViewController:authViewController
+                                                       animated:YES
+                                                     completion:nil];
+                                    return;
+                                }
+                                
                                 NSString *result = nil;
                                 if (error) {
                                     result = [error localizedDescription];
@@ -135,34 +138,6 @@
                           cancelButtonTitle:@"Ok"
                           otherButtonTitles:nil] show];
     }
-}
-
-- (void)loginInAppPasswordView {
-    if (![MMRSession currentSession].isValid) {
-        [MMRSession openSessionWithPermissions:[self applicationPermissions]
-                                 loginBehavior:MMRSessionLoginInAppLoginAndPasswordView
-                            completionsHandler:^(MMRSession *session, NSError *error) {
-                                NSString *result = nil;
-                                if (error) {
-                                    result = [error localizedDescription];
-                                } else {
-                                    result = @"Success";
-                                }
-                                NSLog(@"%@", result);
-                                [[[UIAlertView alloc] initWithTitle:@"Login"
-                                                            message:result
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"Ok"
-                                                  otherButtonTitles:nil] show];
-                            }];
-    } else {
-        [[[UIAlertView alloc] initWithTitle:@"Login"
-                                    message:@"You are already logged in."
-                                   delegate:nil
-                          cancelButtonTitle:@"Ok"
-                          otherButtonTitles:nil] show];
-    }
-    
 }
 
 - (IBAction)loginInSafari {
@@ -172,7 +147,7 @@
         [MMRSession setRedirectURI:@"http://connect.mail.ru/oauth/success.html"];
         [MMRSession openSessionWithPermissions:[self applicationPermissions]
                                  loginBehavior:MMRSessionLoginInSafari
-                            completionsHandler:^(MMRSession *session, NSError *error) {
+                            completionsHandler:^(UIViewController *authViewController, MMRSession *session, NSError *error) {
                                 NSString *result = nil;
                                 if (error) {
                                     result = [error localizedDescription];

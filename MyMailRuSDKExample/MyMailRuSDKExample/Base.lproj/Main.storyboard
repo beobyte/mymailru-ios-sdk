@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Dcp-eW-aMg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Dcp-eW-aMg">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
-        <!--View Controller - MyMailRu SDK-->
+        <!--MyMailRu SDK-->
         <scene sceneID="5x8-56-ZPa">
             <objects>
                 <tableViewController id="Rsc-Tk-DRF" customClass="ViewController" sceneMemberID="viewController">
@@ -22,24 +23,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Login with web view" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="K6c-Aq-Pch">
-                                                    <rect key="frame" x="15" y="0.0" width="290" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="cla-8O-H7E" style="IBUITableViewCellStyleDefault" id="EtM-Eh-CT7">
-                                        <rect key="frame" x="0.0" y="108" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EtM-Eh-CT7" id="lcn-mq-tnY">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Login with username and password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cla-8O-H7E">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Login with auth controller" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="K6c-Aq-Pch">
                                                     <rect key="frame" x="15" y="0.0" width="290" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -211,7 +195,7 @@
             </objects>
             <point key="canvasLocation" x="597" y="7"/>
         </scene>
-        <!--User View Controller - User-->
+        <!--User-->
         <scene sceneID="spI-1D-9yP">
             <objects>
                 <viewController id="LqQ-Lc-zE1" customClass="UserViewController" sceneMemberID="viewController">
@@ -259,7 +243,7 @@
             </objects>
             <point key="canvasLocation" x="1142" y="-682"/>
         </scene>
-        <!--Friends View Controller - Friends-->
+        <!--Friends-->
         <scene sceneID="zOS-hR-eAc">
             <objects>
                 <tableViewController id="e5A-NJ-WuO" customClass="FriendsViewController" sceneMemberID="viewController">
@@ -304,7 +288,7 @@
             </objects>
             <point key="canvasLocation" x="1142" y="7"/>
         </scene>
-        <!--Posts View Controller - Posts-->
+        <!--Posts-->
         <scene sceneID="oeR-Lw-Vbe">
             <objects>
                 <tableViewController id="ISM-zK-HKN" customClass="PostsViewController" sceneMemberID="viewController">
