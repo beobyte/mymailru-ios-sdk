@@ -70,6 +70,13 @@
     self.webView.delegate = self;
     [self.view addSubview:self.webView];
     
+    // if we want to logout and login with another account, then we should delete cookie
+    for(NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]) {
+        if([[cookie domain] hasSuffix:@"mail.ru"]) {
+            [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
+        }
+    }
+    
     NSURLRequest *request = [NSURLRequest requestWithURL:self.authURL];
     [self.webView loadRequest:request];
 }
