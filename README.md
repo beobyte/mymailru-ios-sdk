@@ -31,31 +31,36 @@ Open session without user interaction (with cached tokens):
 ```Objective-C
 [MMRSession openSessionWithPermissions:@[@"stream"] // or any others permissions that your app need
                          loginBehavior:MMRSessionLoginWithCachedToken
-                    completionsHandler:^(MMRSession *session, NSError *error) {
-                        if (error) {
-                            result = [error localizedDescription];
+                    completionsHandler:^(UIViewController *authViewController, MMRSession *session, NSError *error) {
+                        if (!error) {
+                            NSLog(@"Session silent open successfully");
                         } else {
-                            result = @"Session open successfully";
+                            NSLog(@"%@", error);
                         }
-                        NSLog(@"%@", result);
                     }];
 ```
 
 Open session with login web view in your application: 
 
 ```Objective-C
-if (![MMRSession currentSession].isValid) {
-    [MMRSession openSessionWithPermissions:[self applicationPermissions]
-                             loginBehavior:MMRSessionLoginInAppWebView
-                        completionsHandler:^(MMRSession *session, NSError *error) {
-                            NSString *result = nil;
-                            if (error) {
-                                result = [error localizedDescription];
-                            } else {
-                                result = @"Success";
-                            }
-                            NSLog(@"%@", result);
-                        }];
+[MMRSession openSessionWithPermissions:[self applicationPermissions]
+                         loginBehavior:MMRSessionLoginWithAuthorizationController
+                    completionsHandler:^(UIViewController *authViewController, MMRSession *session, NSError *error) {
+                        if (authViewController) {
+                            [self presentViewController:authViewController
+                                               animated:YES
+                                             completion:nil];
+                            return;
+                        }
+                        
+                        NSString *result = nil;
+                        if (error) {
+                            result = [error localizedDescription];
+                        } else {
+                            result = @"Success";
+                        }
+                        NSLog(@"%@", result);
+                    }];
 }
 ```
 
