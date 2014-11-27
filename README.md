@@ -40,7 +40,7 @@ Open session without user interaction (with cached tokens):
                     }];
 ```
 
-Open session with login web view in your application: 
+Open session with authorization controller in your application: 
 
 ```Objective-C
 [MMRSession openSessionWithPermissions:[self applicationPermissions]
