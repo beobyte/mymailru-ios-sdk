@@ -21,16 +21,17 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSInteger, MMRSessionLoginBehavior) {
     MMRSessionLoginWithCachedToken,
-    MMRSessionLoginInAppWebView,
-    MMRSessionLoginInAppLoginAndPasswordView,
+    MMRSessionLoginWithAuthorizationController,
     MMRSessionLoginInSafari,
 };
 
 @class MMRSession;
-typedef void (^MMRSessionOpenHandler)(MMRSession *session, NSError *error);
+typedef void (^MMRSessionOpenHandler)(UIViewController *authViewController, MMRSession *session, NSError *error);
+typedef void (^MMRSessionOpenWithParamsHandler)(MMRSession *session, NSError *error);
 typedef void (^MMRSessionRefreshTokenHandler)(NSError *error);
 
 @interface MMRSession : NSObject
@@ -49,14 +50,14 @@ typedef void (^MMRSessionRefreshTokenHandler)(NSError *error);
 + (void)openSessionForUsername:(NSString *)username
                       password:(NSString *)password
                    permissions:(NSArray *)permissions
-            completionsHandler:(MMRSessionOpenHandler)handler;
+            completionsHandler:(MMRSessionOpenWithParamsHandler)handler;
 
 + (void)openSessionWithAccessToken:(NSString *)accessToken
                       refreshToken:(NSString *)refreshToken
                             userId:(NSString *)userId
                        permissions:(NSArray *)permissions
                     expirationDate:(NSDate *)expirationDate
-                completionsHandler:(MMRSessionOpenHandler)handler;
+                completionsHandler:(MMRSessionOpenWithParamsHandler)handler;
 
 + (MMRSession *)currentSession;
 

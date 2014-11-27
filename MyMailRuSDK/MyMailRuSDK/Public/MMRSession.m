@@ -28,20 +28,20 @@
 #import "MMRTokenCache.h"
 #import "MMRUtils.h"
 #import "MMRErrors.h"
-#import "MMRInAppLoginManager.h"
+#import "MMRAuthController.h"
 
 static NSString* const MMROAuthAuthorizeURL = @"https://connect.mail.ru/oauth/authorize";
 static NSString* const MMRRedirectURL = @"http://connect.mail.ru/oauth/success.html";
 static NSString* const MMROAuthTokenURL = @"https://appsmail.ru/oauth/token";
 
-@interface MMRSession () <UIWebViewDelegate, MMRInAppLoginDelegate>
+@interface MMRSession () <UIWebViewDelegate, MMRAuthControllerDelegate>
 @property (readwrite, copy, nonatomic) NSString *accessToken;
 @property (readwrite, copy, nonatomic) NSString *refreshToken;
 @property (readwrite, copy, nonatomic) NSDate *expirationDate;
 @property (readwrite, copy, nonatomic) NSString *userId;
 @property (readwrite, copy, nonatomic) NSArray *permissions;
 @property (copy, nonatomic) MMRSessionOpenHandler openHandler;
-@property (strong, nonatomic) MMRInAppLoginManager *loginManager;
+@property (strong, nonatomic) MMRAuthController *loginManager;
 @end
 
 @implementation MMRSession
@@ -79,7 +79,7 @@ static NSString *mmr_redirectURI = nil;
     }
     
     if (mmr_currentSession.isValid) {
-        if (handler) handler(mmr_currentSession, nil);
+        if (handler) handler(nil, mmr_currentSession,  nil);
     } else if (behavior != MMRSessionLoginWithCachedToken) {
         if (mmr_redirectURI == nil) [MMRSession setRedirectURI:MMRRedirectURL];
 
@@ -96,24 +96,19 @@ static NSString *mmr_redirectURI = nil;
             params[@"scope"] = scope;
         }
         
+        NSString *appURL = [NSString stringWithFormat:@"%@?%@", MMROAuthAuthorizeURL, [MMRUtils URLEncodedStringFromParams:params]];
+        NSURL *url = [NSURL URLWithString:appURL];
         
-        MMRInAppLoginManager *loginManager = [[MMRInAppLoginManager alloc] init];
-        loginManager.delegate = mmr_currentSession;
-        mmr_currentSession.loginManager = loginManager;
-        
-        if (behavior == MMRSessionLoginInAppLoginAndPasswordView) {
-            [mmr_currentSession.loginManager showLoginAndPasswordView];
-        } else  {
-            NSString *appURL = [NSString stringWithFormat:@"%@?%@", MMROAuthAuthorizeURL, [MMRUtils URLEncodedStringFromParams:params]];
-            NSURL *url = [NSURL URLWithString:appURL];
-            
-            if (behavior == MMRSessionLoginInAppWebView) [loginManager showLoginWebViewWithURL:url];
-            else if (behavior == MMRSessionLoginInSafari) [[UIApplication sharedApplication] openURL:url];
+        if (behavior == MMRSessionLoginWithAuthorizationController) {
+            UIViewController *ac = [MMRAuthController controllerWithAuthorizationURL:url
+                                                                            delegate:mmr_currentSession];
+            if (handler) handler(ac, nil, nil);
         }
+        else if (behavior == MMRSessionLoginInSafari) [[UIApplication sharedApplication] openURL:url];
     }
 }
 
-+ (void)openSessionForUsername:(NSString *)username password:(NSString *)password permissions:(NSArray *)permissions completionsHandler:(MMRSessionOpenHandler)handler {
++ (void)openSessionForUsername:(NSString *)username password:(NSString *)password permissions:(NSArray *)permissions completionsHandler:(MMRSessionOpenWithParamsHandler)handler {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     request.HTTPMethod = @"POST";
     
@@ -163,7 +158,7 @@ static NSString *mmr_redirectURI = nil;
                             userId:(NSString *)userId
                        permissions:(NSArray *)permissions
                     expirationDate:(NSDate *)expirationDate
-                completionsHandler:(MMRSessionOpenHandler)handler {
+                completionsHandler:(MMRSessionOpenWithParamsHandler)handler {
     mmr_currentSession = [[MMRSession alloc] init];
     mmr_currentSession.permissions = permissions;
     mmr_currentSession.accessToken = accessToken;
@@ -266,12 +261,12 @@ static NSString *mmr_redirectURI = nil;
 	[self updateTokenInformationWithParams:newAccessData];
     
     if (self.isValid) {
-        if (self.openHandler) self.openHandler(self, nil);
+        if (self.openHandler) self.openHandler(nil, self, nil);
         self.openHandler = nil;
     } else {
         self.permissions = @[];
         NSError *error = [MMRErrors errorForCode:MMRErrorUserAuthorizationFailed];
-        self.openHandler(nil, error);
+        self.openHandler(nil, nil, error);
     }
           
 	return YES;
@@ -298,30 +293,21 @@ static NSString *mmr_redirectURI = nil;
 	[MMRTokenCache cacheTokenInformation:info];
 }
 
-#pragma mark - MMRInAppLoginDelegate
+#pragma mark - MMRAuthControllerDelegate
 
 - (void)userAuthorizedWithSessionParams:(NSDictionary *)params error:(NSError *)error {
     if (!error) {
         [self updateTokenInformationWithParams:params];
     }
-    if (self.openHandler) self.openHandler(self, error);
+    if (self.openHandler) self.openHandler(nil, self, error);
     self.openHandler = nil;
 }
 
-- (void)userDidEnterLogin:(NSString *)login andPassword:(NSString *)password {
-    [MMRSession openSessionForUsername:login
-                              password:password
-                           permissions:self.permissions
-                    completionsHandler:^(MMRSession *session, NSError *error) {
-                        if (self.openHandler) self.openHandler(session, error);
-                        self.openHandler = nil;
-                    }];
-}
 
-- (void)userDidCloseLoginView {
+- (void)userDidCloseController {
     if (self.openHandler) {
         NSError *error = [MMRErrors errorForCode:MMRErrorUserCancelOperation];
-        self.openHandler(nil, error);
+        self.openHandler(nil, nil, error);
         self.openHandler = nil;
     }
 }

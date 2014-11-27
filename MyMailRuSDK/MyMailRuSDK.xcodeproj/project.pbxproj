@@ -12,9 +12,9 @@
 		0A51979A19CC4B4B00C7C7FC /* MMRErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A51978919CC4B4B00C7C7FC /* MMRErrors.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		0A51979B19CC4B4B00C7C7FC /* MMRErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A51978A19CC4B4B00C7C7FC /* MMRErrors.m */; };
 		0A51979C19CC4B4B00C7C7FC /* MMRErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A51978A19CC4B4B00C7C7FC /* MMRErrors.m */; };
-		0A51979D19CC4B4B00C7C7FC /* MMRInAppLoginManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A51978B19CC4B4B00C7C7FC /* MMRInAppLoginManager.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		0A51979E19CC4B4B00C7C7FC /* MMRInAppLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A51978C19CC4B4B00C7C7FC /* MMRInAppLoginManager.m */; };
-		0A51979F19CC4B4B00C7C7FC /* MMRInAppLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A51978C19CC4B4B00C7C7FC /* MMRInAppLoginManager.m */; };
+		0A51979D19CC4B4B00C7C7FC /* MMRAuthController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A51978B19CC4B4B00C7C7FC /* MMRAuthController.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		0A51979E19CC4B4B00C7C7FC /* MMRAuthController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A51978C19CC4B4B00C7C7FC /* MMRAuthController.m */; };
+		0A51979F19CC4B4B00C7C7FC /* MMRAuthController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A51978C19CC4B4B00C7C7FC /* MMRAuthController.m */; };
 		0A5197A019CC4B4B00C7C7FC /* MMRTokenCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A51978D19CC4B4B00C7C7FC /* MMRTokenCache.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		0A5197A119CC4B4B00C7C7FC /* MMRTokenCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A51978E19CC4B4B00C7C7FC /* MMRTokenCache.m */; };
 		0A5197A219CC4B4B00C7C7FC /* MMRTokenCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A51978E19CC4B4B00C7C7FC /* MMRTokenCache.m */; };
@@ -41,8 +41,8 @@
 		0A51977E19CC4AF200C7C7FC /* MyMailRuSDKTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyMailRuSDKTests.m; sourceTree = "<group>"; };
 		0A51978919CC4B4B00C7C7FC /* MMRErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMRErrors.h; sourceTree = "<group>"; };
 		0A51978A19CC4B4B00C7C7FC /* MMRErrors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMRErrors.m; sourceTree = "<group>"; };
-		0A51978B19CC4B4B00C7C7FC /* MMRInAppLoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMRInAppLoginManager.h; sourceTree = "<group>"; };
-		0A51978C19CC4B4B00C7C7FC /* MMRInAppLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMRInAppLoginManager.m; sourceTree = "<group>"; };
+		0A51978B19CC4B4B00C7C7FC /* MMRAuthController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMRAuthController.h; sourceTree = "<group>"; };
+		0A51978C19CC4B4B00C7C7FC /* MMRAuthController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMRAuthController.m; sourceTree = "<group>"; };
 		0A51978D19CC4B4B00C7C7FC /* MMRTokenCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMRTokenCache.h; sourceTree = "<group>"; };
 		0A51978E19CC4B4B00C7C7FC /* MMRTokenCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMRTokenCache.m; sourceTree = "<group>"; };
 		0A51978F19CC4B4B00C7C7FC /* MMRUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMRUtils.h; sourceTree = "<group>"; };
@@ -132,8 +132,8 @@
 			children = (
 				0A51978919CC4B4B00C7C7FC /* MMRErrors.h */,
 				0A51978A19CC4B4B00C7C7FC /* MMRErrors.m */,
-				0A51978B19CC4B4B00C7C7FC /* MMRInAppLoginManager.h */,
-				0A51978C19CC4B4B00C7C7FC /* MMRInAppLoginManager.m */,
+				0A51978B19CC4B4B00C7C7FC /* MMRAuthController.h */,
+				0A51978C19CC4B4B00C7C7FC /* MMRAuthController.m */,
 				0A51978D19CC4B4B00C7C7FC /* MMRTokenCache.h */,
 				0A51978E19CC4B4B00C7C7FC /* MMRTokenCache.m */,
 				0A51978F19CC4B4B00C7C7FC /* MMRUtils.h */,
@@ -164,7 +164,7 @@
 			files = (
 				0A5197A919CC4B4B00C7C7FC /* MMRSession.h in Headers */,
 				0A5197AC19CC4B4B00C7C7FC /* MyMailRu.h in Headers */,
-				0A51979D19CC4B4B00C7C7FC /* MMRInAppLoginManager.h in Headers */,
+				0A51979D19CC4B4B00C7C7FC /* MMRAuthController.h in Headers */,
 				0A51979A19CC4B4B00C7C7FC /* MMRErrors.h in Headers */,
 				0A5197A019CC4B4B00C7C7FC /* MMRTokenCache.h in Headers */,
 				0A5197A319CC4B4B00C7C7FC /* MMRUtils.h in Headers */,
@@ -273,7 +273,7 @@
 				0A5197A719CC4B4B00C7C7FC /* MMRRequest.m in Sources */,
 				0A51979B19CC4B4B00C7C7FC /* MMRErrors.m in Sources */,
 				0A5197A419CC4B4B00C7C7FC /* MMRUtils.m in Sources */,
-				0A51979E19CC4B4B00C7C7FC /* MMRInAppLoginManager.m in Sources */,
+				0A51979E19CC4B4B00C7C7FC /* MMRAuthController.m in Sources */,
 				0A5197AD19CC4B4B00C7C7FC /* MyMailRu.m in Sources */,
 				0A5197AA19CC4B4B00C7C7FC /* MMRSession.m in Sources */,
 			);
@@ -285,7 +285,7 @@
 			files = (
 				0A5197AB19CC4B4B00C7C7FC /* MMRSession.m in Sources */,
 				0A51977F19CC4AF200C7C7FC /* MyMailRuSDKTests.m in Sources */,
-				0A51979F19CC4B4B00C7C7FC /* MMRInAppLoginManager.m in Sources */,
+				0A51979F19CC4B4B00C7C7FC /* MMRAuthController.m in Sources */,
 				0A51979C19CC4B4B00C7C7FC /* MMRErrors.m in Sources */,
 				0A5197A519CC4B4B00C7C7FC /* MMRUtils.m in Sources */,
 				0A5197AE19CC4B4B00C7C7FC /* MyMailRu.m in Sources */,
@@ -394,6 +394,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				INFOPLIST_FILE = MyMailRuSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
@@ -413,6 +414,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				INFOPLIST_FILE = MyMailRuSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;

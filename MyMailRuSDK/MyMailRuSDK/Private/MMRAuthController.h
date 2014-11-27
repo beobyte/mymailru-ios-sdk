@@ -1,4 +1,4 @@
-// MMRInAppLoginManager.m
+// MMRAuthController.h
 //
 // Copyright (c) 2014 Anton Grachev
 //
@@ -21,19 +21,15 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@protocol MMRInAppLoginDelegate <NSObject>
+@protocol MMRAuthControllerDelegate <NSObject>
+- (void)userAuthorizedWithSessionParams:(NSDictionary *)params error:(NSError *)error;
 @optional
-- (void)userAuthorizedWithSessionParams:(NSDictionary *)params error:(NSError *)error; // for web view
-- (void)userDidEnterLogin:(NSString *)login andPassword:(NSString *)password; // for alert view
-- (void)userDidCloseLoginView;
+- (void)userDidCloseController;
 @end
 
-@interface MMRInAppLoginManager : NSObject
-
-@property (weak, nonatomic) id<MMRInAppLoginDelegate> delegate;
-
-- (void)showLoginAndPasswordView;
-- (void)showLoginWebViewWithURL:(NSURL *)url;
-
+@interface MMRAuthController : UIViewController
++ (UIViewController *)controllerWithAuthorizationURL:(NSURL *)URL
+                                            delegate:(id<MMRAuthControllerDelegate>)delegate;
 @end
