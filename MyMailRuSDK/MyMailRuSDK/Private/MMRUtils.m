@@ -42,7 +42,8 @@
 }
 
 + (NSDictionary *)queryParametersFromURL:(NSURL *)url {
-    NSString *query = url.query;
+    NSString *query = [url fragment];
+    if (!query) [url query];
     NSArray *pairs = [query componentsSeparatedByString:@"&"];
     NSMutableDictionary * kvPairs = [NSMutableDictionary dictionary];
     for (NSString * pair in pairs) {
