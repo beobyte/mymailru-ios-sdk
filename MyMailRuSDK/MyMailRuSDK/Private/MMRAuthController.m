@@ -55,7 +55,7 @@
 }
 
 - (void)dealloc {
-    self.webView.delegate = nil;
+    self.webView = nil;
 }
 
 - (void)viewDidLoad {
