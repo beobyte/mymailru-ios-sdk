@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		0A34DC361A4566F6007B125D /* Built Framework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 0A34DC371A4566F6007B125D /* Build configuration list for PBXAggregateTarget "Built Framework" */;
+			buildPhases = (
+				0A34DC3A1A4566FD007B125D /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "Built Framework";
+			productName = "Built Framework";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		0A51977519CC4AF100C7C7FC /* MyMailRuSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A51977419CC4AF100C7C7FC /* MyMailRuSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A51977F19CC4AF200C7C7FC /* MyMailRuSDKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A51977E19CC4AF200C7C7FC /* MyMailRuSDKTests.m */; };
@@ -220,6 +234,9 @@
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Anton Grachev";
 				TargetAttributes = {
+					0A34DC361A4566F6007B125D = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
 					0A51976E19CC4AF100C7C7FC = {
 						CreatedOnToolsVersion = 6.0.1;
 						DevelopmentTeam = 7N3U5T7386;
@@ -243,6 +260,7 @@
 			targets = (
 				0A51976E19CC4AF100C7C7FC /* MyMailRuSDK */,
 				0A51977919CC4AF200C7C7FC /* MyMailRuSDKTests */,
+				0A34DC361A4566F6007B125D /* Built Framework */,
 			);
 		};
 /* End PBXProject section */
@@ -263,6 +281,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0A34DC3A1A4566FD007B125D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "FMK_NAME=MyMailRuSDK\nINSTALL_DIR=${SRCROOT}/Framework\n\nxcodebuild -configuration \"Release\" -target \"${FMK_NAME}\" -sdk iphoneos clean build\nif [ $? != 0 ]; then\n    exit 1;\nfi\nxcodebuild -configuration \"Release\" -target \"${FMK_NAME}\" -sdk iphonesimulator clean build\nif [ $? != 0 ]; then\n    exit 1;\nfi\n\nmkdir -p \"${INSTALL_DIR}\"\n\ncp -R \"build/Release-iphoneos/\" \"${INSTALL_DIR}/\"\nlipo -create \"build/Release-iphoneos/${FMK_NAME}.framework/${FMK_NAME}\" \"build/Release-iphonesimulator/${FMK_NAME}.framework/${FMK_NAME}\" -output \"${INSTALL_DIR}/${FMK_NAME}.framework/${FMK_NAME}\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0A51976A19CC4AF100C7C7FC /* Sources */ = {
@@ -297,10 +331,28 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		0A34DC381A4566F6007B125D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		0A34DC391A4566F6007B125D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		0A51978019CC4AF200C7C7FC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					armv7s,
+				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -335,10 +387,11 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SYMROOT = build;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 armv7 armv7s x86_64 i386";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -348,6 +401,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					armv7s,
+				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -376,10 +433,12 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SYMROOT = build;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "arm64 armv7 armv7s x86_64 i386";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -388,6 +447,10 @@
 		0A51978319CC4AF200C7C7FC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					armv7s,
+				);
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
@@ -400,6 +463,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SYMROOT = build;
@@ -410,6 +474,10 @@
 		0A51978419CC4AF200C7C7FC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					armv7s,
+				);
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -421,6 +489,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SYMROOT = build;
@@ -461,6 +530,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0A34DC371A4566F6007B125D /* Build configuration list for PBXAggregateTarget "Built Framework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A34DC381A4566F6007B125D /* Debug */,
+				0A34DC391A4566F6007B125D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		0A51976919CC4AF100C7C7FC /* Build configuration list for PBXProject "MyMailRuSDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
