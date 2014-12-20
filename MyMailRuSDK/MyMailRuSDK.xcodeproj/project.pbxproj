@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
-		0A34DC361A4566F6007B125D /* Built Framework */ = {
+		0A34DC361A4566F6007B125D /* Build Framework */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 0A34DC371A4566F6007B125D /* Build configuration list for PBXAggregateTarget "Built Framework" */;
+			buildConfigurationList = 0A34DC371A4566F6007B125D /* Build configuration list for PBXAggregateTarget "Build Framework" */;
 			buildPhases = (
 				0A34DC3A1A4566FD007B125D /* ShellScript */,
 			);
 			dependencies = (
 			);
-			name = "Built Framework";
+			name = "Build Framework";
 			productName = "Built Framework";
 		};
 /* End PBXAggregateTarget section */
@@ -260,7 +260,7 @@
 			targets = (
 				0A51976E19CC4AF100C7C7FC /* MyMailRuSDK */,
 				0A51977919CC4AF200C7C7FC /* MyMailRuSDKTests */,
-				0A34DC361A4566F6007B125D /* Built Framework */,
+				0A34DC361A4566F6007B125D /* Build Framework */,
 			);
 		};
 /* End PBXProject section */
@@ -530,7 +530,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0A34DC371A4566F6007B125D /* Build configuration list for PBXAggregateTarget "Built Framework" */ = {
+		0A34DC371A4566F6007B125D /* Build configuration list for PBXAggregateTarget "Build Framework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0A34DC381A4566F6007B125D /* Debug */,
