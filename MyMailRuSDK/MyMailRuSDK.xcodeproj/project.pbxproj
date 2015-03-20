@@ -146,10 +146,10 @@
 		0A51978819CC4B4B00C7C7FC /* Private */ = {
 			isa = PBXGroup;
 			children = (
-				0A51978919CC4B4B00C7C7FC /* MMRErrorUtility.h */,
-				0A51978A19CC4B4B00C7C7FC /* MMRErrorUtility.m */,
 				0A51978B19CC4B4B00C7C7FC /* MMRAuthController.h */,
 				0A51978C19CC4B4B00C7C7FC /* MMRAuthController.m */,
+				0A51978919CC4B4B00C7C7FC /* MMRErrorUtility.h */,
+				0A51978A19CC4B4B00C7C7FC /* MMRErrorUtility.m */,
 				0A51978D19CC4B4B00C7C7FC /* MMRTokenCache.h */,
 				0A51978E19CC4B4B00C7C7FC /* MMRTokenCache.m */,
 				0A51978F19CC4B4B00C7C7FC /* MMRUtils.h */,
@@ -161,13 +161,13 @@
 		0A51979119CC4B4B00C7C7FC /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				0A0637241ABC394D00D8FCD7 /* MMRError.h */,
 				0A51979219CC4B4B00C7C7FC /* MMRRequest.h */,
 				0A51979319CC4B4B00C7C7FC /* MMRRequest.m */,
 				0A51979419CC4B4B00C7C7FC /* MMRSession.h */,
 				0A51979519CC4B4B00C7C7FC /* MMRSession.m */,
 				0A51979619CC4B4B00C7C7FC /* MyMailRu.h */,
 				0A51979719CC4B4B00C7C7FC /* MyMailRu.m */,
-				0A0637241ABC394D00D8FCD7 /* MMRError.h */,
 			);
 			path = Public;
 			sourceTree = "<group>";
