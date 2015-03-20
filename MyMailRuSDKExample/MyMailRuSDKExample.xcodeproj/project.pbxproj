@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A0637271ABC3DCB00D8FCD7 /* MyMailRuSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A0637261ABC3DCB00D8FCD7 /* MyMailRuSDK.framework */; };
 		0A5BAB5B197EC44F0042F901 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A5BAB5A197EC44F0042F901 /* Foundation.framework */; };
 		0A5BAB5D197EC44F0042F901 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A5BAB5C197EC44F0042F901 /* CoreGraphics.framework */; };
 		0A5BAB5F197EC44F0042F901 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A5BAB5E197EC44F0042F901 /* UIKit.framework */; };
@@ -22,7 +23,6 @@
 		0A623F3519823D1400FF3D06 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A623F3419823D1400FF3D06 /* ViewController.m */; };
 		0A684C881982481A00E64BF2 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A684C871982481A00E64BF2 /* FriendsViewController.m */; };
 		0A684C8B19824C0000E64BF2 /* PostsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A684C8A19824C0000E64BF2 /* PostsViewController.m */; };
-		0A9D982A19CC7476008B9986 /* MyMailRuSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A9D982919CC7476008B9986 /* MyMailRuSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A0637261ABC3DCB00D8FCD7 /* MyMailRuSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MyMailRuSDK.framework; path = "../../../../Library/Developer/Xcode/DerivedData/MyMailRuSDK-fflkxkcoghtetwgabuyhqpzcuhfn/Build/Products/Debug-iphoneos/MyMailRuSDK.framework"; sourceTree = "<group>"; };
 		0A5BAB57197EC44F0042F901 /* MyMailRuSDKExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMailRuSDKExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A5BAB5A197EC44F0042F901 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0A5BAB5C197EC44F0042F901 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -58,7 +59,6 @@
 		0A684C871982481A00E64BF2 /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
 		0A684C8919824C0000E64BF2 /* PostsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostsViewController.h; sourceTree = "<group>"; };
 		0A684C8A19824C0000E64BF2 /* PostsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostsViewController.m; sourceTree = "<group>"; };
-		0A9D982919CC7476008B9986 /* MyMailRuSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MyMailRuSDK.framework; path = "../../../../Library/Developer/Xcode/DerivedData/MyMailRuSDK-bwzhtvuxmdrdfcgezjxdkbudnpfe/Build/Products/Debug-iphoneos/MyMailRuSDK.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A9D982A19CC7476008B9986 /* MyMailRuSDK.framework in Frameworks */,
+				0A0637271ABC3DCB00D8FCD7 /* MyMailRuSDK.framework in Frameworks */,
 				0A5BAB5D197EC44F0042F901 /* CoreGraphics.framework in Frameworks */,
 				0A5BAB5F197EC44F0042F901 /* UIKit.framework in Frameworks */,
 				0A5BAB5B197EC44F0042F901 /* Foundation.framework in Frameworks */,
@@ -107,7 +107,7 @@
 		0A5BAB59197EC44F0042F901 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0A9D982919CC7476008B9986 /* MyMailRuSDK.framework */,
+				0A0637261ABC3DCB00D8FCD7 /* MyMailRuSDK.framework */,
 				0A5BAB5A197EC44F0042F901 /* Foundation.framework */,
 				0A5BAB5C197EC44F0042F901 /* CoreGraphics.framework */,
 				0A5BAB5E197EC44F0042F901 /* UIKit.framework */,

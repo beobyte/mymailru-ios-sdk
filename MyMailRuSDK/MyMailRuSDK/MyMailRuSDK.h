@@ -27,5 +27,5 @@
 #import <MyMailRuSDK/MMRSession.h>
 #import <MyMailRuSDK/MyMailRu.h>
 
-#define MY_MAIL_RU_SDK_VERSION 121
-#define MY_MAIL_RU_SDK_VERSION_STRING @"1.2.1"
+#define MY_MAIL_RU_SDK_VERSION 130
+#define MY_MAIL_RU_SDK_VERSION_STRING @"1.3.0"

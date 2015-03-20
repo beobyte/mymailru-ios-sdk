@@ -21,7 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		0A0637251ABC394D00D8FCD7 /* MMRError.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A0637241ABC394D00D8FCD7 /* MMRError.h */; };
+		0A0637251ABC394D00D8FCD7 /* MMRError.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A0637241ABC394D00D8FCD7 /* MMRError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A51977519CC4AF100C7C7FC /* MyMailRuSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A51977419CC4AF100C7C7FC /* MyMailRuSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A51977F19CC4AF200C7C7FC /* MyMailRuSDKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A51977E19CC4AF200C7C7FC /* MyMailRuSDKTests.m */; };
 		0A51979A19CC4B4B00C7C7FC /* MMRErrorUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A51978919CC4B4B00C7C7FC /* MMRErrorUtility.h */; settings = {ATTRIBUTES = (Private, ); }; };
