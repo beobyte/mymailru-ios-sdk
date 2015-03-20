@@ -1,6 +1,6 @@
 // MMRSession.m
 //
-// Copyright (c) 2014 Anton Grachev
+// Copyright (c) 2015 Anton Grachev
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,7 @@
 #import "MyMailRu.h"
 #import "MMRTokenCache.h"
 #import "MMRUtils.h"
-#import "MMRErrors.h"
+#import "MMRErrorUtility.h"
 #import "MMRAuthController.h"
 
 static NSString* const MMROAuthAuthorizeURL = @"https://connect.mail.ru/oauth/authorize";
@@ -141,7 +141,7 @@ static NSString *mmr_redirectURI = nil;
                                    return;
                                }
                                
-                               NSError *error = [MMRErrors errorFromJSON:result];
+                               NSError *error = [MMRErrorUtility errorFromJSON:result];
                                if (error) {
                                    if (handler) handler(nil, error);
                                    return;
@@ -222,7 +222,7 @@ static NSString *mmr_redirectURI = nil;
                                    return;
                                }
                                
-                               NSError *error = [MMRErrors errorFromJSON:result];
+                               NSError *error = [MMRErrorUtility errorFromJSON:result];
                                if (error) {
                                    if (handler) handler(error);
                                    return;
@@ -265,7 +265,7 @@ static NSString *mmr_redirectURI = nil;
         self.openHandler = nil;
     } else {
         self.permissions = @[];
-        NSError *error = [MMRErrors errorForCode:MMRErrorUserAuthorizationFailed];
+        NSError *error = [MMRErrorUtility errorForCode:MMRErrorUserAuthorizationFailed];
         self.openHandler(nil, nil, error);
     }
           
@@ -306,7 +306,7 @@ static NSString *mmr_redirectURI = nil;
 
 - (void)userDidCloseController {
     if (self.openHandler) {
-        NSError *error = [MMRErrors errorForCode:MMRErrorUserCancelOperation];
+        NSError *error = [MMRErrorUtility errorForCode:MMRErrorUserCancelOperation];
         self.openHandler(nil, nil, error);
         self.openHandler = nil;
     }

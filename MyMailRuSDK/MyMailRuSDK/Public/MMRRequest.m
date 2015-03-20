@@ -1,6 +1,6 @@
 // MMRequest.m
 //
-// Copyright (c) 2014 Anton Grachev
+// Copyright (c) 2015 Anton Grachev
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -25,7 +25,7 @@
 #import "MyMailRu.h"
 #import "MMRSession.h"
 #import "MMRUtils.h"
-#import "MMRErrors.h"
+#import "MMRErrorUtility.h"
 
 static NSString* const kMMRAPIBaseURL = @"http://www.appsmail.ru/platform/api";
 
@@ -97,7 +97,7 @@ static NSString* const kMMRAPIBaseURL = @"http://www.appsmail.ru/platform/api";
                                    return;
                                }
                                
-                               NSError *error = [MMRErrors errorFromJSON:result];
+                               NSError *error = [MMRErrorUtility errorFromJSON:result];
                                if (error) {
                                    if (handler) handler(nil, error);
                                    return;

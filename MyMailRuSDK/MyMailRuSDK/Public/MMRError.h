@@ -1,6 +1,6 @@
-// MMRErrors.h
+//  MMRError.h
 //
-// Copyright (c) 2014 Anton Grachev
+// Copyright (c) 2015 Anton Grachev
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -20,8 +20,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
-
 typedef NS_ENUM(NSInteger, MMRErrorCodes) {
     MMRErrorUnknown = 1,
     MMRErrorUnknownMethodCalled = 2,
@@ -35,10 +33,3 @@ typedef NS_ENUM(NSInteger, MMRErrorCodes) {
     MMRErrorPermissionError = 200,
     MMRErrorUserCancelOperation = -101
 };
-
-@interface MMRErrors : NSObject
-
-+ (NSError *)errorFromJSON:(id)json;
-+ (NSError *)errorForCode:(MMRErrorCodes)errorCode;
-
-@end

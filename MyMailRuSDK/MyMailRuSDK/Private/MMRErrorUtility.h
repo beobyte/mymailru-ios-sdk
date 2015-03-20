@@ -1,4 +1,4 @@
-// MMRequest.h
+// MMRErrors.h
 //
 // Copyright (c) 2015 Anton Grachev
 //
@@ -20,20 +20,25 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-
 #import <Foundation/Foundation.h>
 
-typedef void (^MMRRequestHandler)(id json, NSError *error);
+typedef NS_ENUM(NSInteger, MMRErrorCodes) {
+    MMRErrorUnknown = 1,
+    MMRErrorUnknownMethodCalled = 2,
+    MMRErrorServiceUnavailable = 3,
+    MMRErrorMethodDeprecated = 4,
+    MMRErrorParameterMissingOrInvalid = 100,
+    MMRErrorUserAuthorizationFailed = 102,
+    MMRErrorApplicationLookupFailed = 103,
+    MMRErrorIncorrectSignature = 104,
+    MMRErrorApplicationNotInstalledForUser = 105,
+    MMRErrorPermissionError = 200,
+    MMRErrorUserCancelOperation = -101
+};
 
-@interface MMRRequest : NSObject
+@interface MMRErrorUtility : NSObject
 
-+ (MMRRequest *)requestForUsersInfoWithParams:(NSDictionary *)params;
-+ (MMRRequest *)requestForFriendsWithParams:(NSDictionary *)params;
-+ (MMRRequest *)requestForStreamPostWithParams:(NSDictionary *)params;
-+ (MMRRequest *)requestForAPIMethod:(NSString *)apiMethod
-                             params:(NSDictionary *)params
-                         HTTPMethod:(NSString *)httpMethod;
-
-- (void)sendWithCompletionHandler:(MMRRequestHandler)handler;
++ (NSError *)errorFromJSON:(id)json;
++ (NSError *)errorForCode:(MMRErrorCodes)errorCode;
 
 @end

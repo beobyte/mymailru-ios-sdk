@@ -1,6 +1,6 @@
 // MMRAuthController.m
 //
-// Copyright (c) 2014 Anton Grachev
+// Copyright (c) 2015 Anton Grachev
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,7 +24,7 @@
 #import <UIKit/UIKit.h>
 #import "MMRSession.h"
 #import "MMRUtils.h"
-#import "MMRErrors.h"
+#import "MMRErrorUtility.h"
 
 #define MMRColor [UIColor colorWithRed:14/255.f green:94/255.f blue:165/255.f alpha:1.f]
 
@@ -86,7 +86,7 @@
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     if ([request.URL.absoluteString hasPrefix:[MMRSession redirectURI]]) {
         NSDictionary *params = [MMRUtils queryParametersFromURL:request.URL];
-        NSError *error = [MMRErrors errorFromJSON:params];
+        NSError *error = [MMRErrorUtility errorFromJSON:params];
         
         if ([self.delegate respondsToSelector:@selector(userAuthorizedWithSessionParams:error:)]) {
             [self.delegate userAuthorizedWithSessionParams:params error:error];

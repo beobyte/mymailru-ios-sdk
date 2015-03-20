@@ -21,11 +21,12 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		0A0637251ABC394D00D8FCD7 /* MMRError.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A0637241ABC394D00D8FCD7 /* MMRError.h */; };
 		0A51977519CC4AF100C7C7FC /* MyMailRuSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A51977419CC4AF100C7C7FC /* MyMailRuSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A51977F19CC4AF200C7C7FC /* MyMailRuSDKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A51977E19CC4AF200C7C7FC /* MyMailRuSDKTests.m */; };
-		0A51979A19CC4B4B00C7C7FC /* MMRErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A51978919CC4B4B00C7C7FC /* MMRErrors.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		0A51979B19CC4B4B00C7C7FC /* MMRErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A51978A19CC4B4B00C7C7FC /* MMRErrors.m */; };
-		0A51979C19CC4B4B00C7C7FC /* MMRErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A51978A19CC4B4B00C7C7FC /* MMRErrors.m */; };
+		0A51979A19CC4B4B00C7C7FC /* MMRErrorUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A51978919CC4B4B00C7C7FC /* MMRErrorUtility.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		0A51979B19CC4B4B00C7C7FC /* MMRErrorUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A51978A19CC4B4B00C7C7FC /* MMRErrorUtility.m */; };
+		0A51979C19CC4B4B00C7C7FC /* MMRErrorUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A51978A19CC4B4B00C7C7FC /* MMRErrorUtility.m */; };
 		0A51979D19CC4B4B00C7C7FC /* MMRAuthController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A51978B19CC4B4B00C7C7FC /* MMRAuthController.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		0A51979E19CC4B4B00C7C7FC /* MMRAuthController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A51978C19CC4B4B00C7C7FC /* MMRAuthController.m */; };
 		0A51979F19CC4B4B00C7C7FC /* MMRAuthController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A51978C19CC4B4B00C7C7FC /* MMRAuthController.m */; };
@@ -47,14 +48,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A0637241ABC394D00D8FCD7 /* MMRError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMRError.h; sourceTree = "<group>"; };
 		0A51976F19CC4AF100C7C7FC /* MyMailRuSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyMailRuSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A51977319CC4AF100C7C7FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A51977419CC4AF100C7C7FC /* MyMailRuSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyMailRuSDK.h; sourceTree = "<group>"; };
 		0A51977A19CC4AF200C7C7FC /* MyMailRuSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyMailRuSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A51977D19CC4AF200C7C7FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A51977E19CC4AF200C7C7FC /* MyMailRuSDKTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyMailRuSDKTests.m; sourceTree = "<group>"; };
-		0A51978919CC4B4B00C7C7FC /* MMRErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMRErrors.h; sourceTree = "<group>"; };
-		0A51978A19CC4B4B00C7C7FC /* MMRErrors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMRErrors.m; sourceTree = "<group>"; };
+		0A51978919CC4B4B00C7C7FC /* MMRErrorUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMRErrorUtility.h; sourceTree = "<group>"; };
+		0A51978A19CC4B4B00C7C7FC /* MMRErrorUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMRErrorUtility.m; sourceTree = "<group>"; };
 		0A51978B19CC4B4B00C7C7FC /* MMRAuthController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMRAuthController.h; sourceTree = "<group>"; };
 		0A51978C19CC4B4B00C7C7FC /* MMRAuthController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMRAuthController.m; sourceTree = "<group>"; };
 		0A51978D19CC4B4B00C7C7FC /* MMRTokenCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMRTokenCache.h; sourceTree = "<group>"; };
@@ -144,8 +146,8 @@
 		0A51978819CC4B4B00C7C7FC /* Private */ = {
 			isa = PBXGroup;
 			children = (
-				0A51978919CC4B4B00C7C7FC /* MMRErrors.h */,
-				0A51978A19CC4B4B00C7C7FC /* MMRErrors.m */,
+				0A51978919CC4B4B00C7C7FC /* MMRErrorUtility.h */,
+				0A51978A19CC4B4B00C7C7FC /* MMRErrorUtility.m */,
 				0A51978B19CC4B4B00C7C7FC /* MMRAuthController.h */,
 				0A51978C19CC4B4B00C7C7FC /* MMRAuthController.m */,
 				0A51978D19CC4B4B00C7C7FC /* MMRTokenCache.h */,
@@ -165,6 +167,7 @@
 				0A51979519CC4B4B00C7C7FC /* MMRSession.m */,
 				0A51979619CC4B4B00C7C7FC /* MyMailRu.h */,
 				0A51979719CC4B4B00C7C7FC /* MyMailRu.m */,
+				0A0637241ABC394D00D8FCD7 /* MMRError.h */,
 			);
 			path = Public;
 			sourceTree = "<group>";
@@ -176,10 +179,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A0637251ABC394D00D8FCD7 /* MMRError.h in Headers */,
 				0A5197A919CC4B4B00C7C7FC /* MMRSession.h in Headers */,
 				0A5197AC19CC4B4B00C7C7FC /* MyMailRu.h in Headers */,
 				0A51979D19CC4B4B00C7C7FC /* MMRAuthController.h in Headers */,
-				0A51979A19CC4B4B00C7C7FC /* MMRErrors.h in Headers */,
+				0A51979A19CC4B4B00C7C7FC /* MMRErrorUtility.h in Headers */,
 				0A5197A019CC4B4B00C7C7FC /* MMRTokenCache.h in Headers */,
 				0A5197A319CC4B4B00C7C7FC /* MMRUtils.h in Headers */,
 				0A5197A619CC4B4B00C7C7FC /* MMRRequest.h in Headers */,
@@ -305,7 +309,7 @@
 			files = (
 				0A5197A119CC4B4B00C7C7FC /* MMRTokenCache.m in Sources */,
 				0A5197A719CC4B4B00C7C7FC /* MMRRequest.m in Sources */,
-				0A51979B19CC4B4B00C7C7FC /* MMRErrors.m in Sources */,
+				0A51979B19CC4B4B00C7C7FC /* MMRErrorUtility.m in Sources */,
 				0A5197A419CC4B4B00C7C7FC /* MMRUtils.m in Sources */,
 				0A51979E19CC4B4B00C7C7FC /* MMRAuthController.m in Sources */,
 				0A5197AD19CC4B4B00C7C7FC /* MyMailRu.m in Sources */,
@@ -320,7 +324,7 @@
 				0A5197AB19CC4B4B00C7C7FC /* MMRSession.m in Sources */,
 				0A51977F19CC4AF200C7C7FC /* MyMailRuSDKTests.m in Sources */,
 				0A51979F19CC4B4B00C7C7FC /* MMRAuthController.m in Sources */,
-				0A51979C19CC4B4B00C7C7FC /* MMRErrors.m in Sources */,
+				0A51979C19CC4B4B00C7C7FC /* MMRErrorUtility.m in Sources */,
 				0A5197A519CC4B4B00C7C7FC /* MMRUtils.m in Sources */,
 				0A5197AE19CC4B4B00C7C7FC /* MyMailRu.m in Sources */,
 				0A5197A819CC4B4B00C7C7FC /* MMRRequest.m in Sources */,
@@ -537,6 +541,7 @@
 				0A34DC391A4566F6007B125D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0A51976919CC4AF100C7C7FC /* Build configuration list for PBXProject "MyMailRuSDK" */ = {
 			isa = XCConfigurationList;
