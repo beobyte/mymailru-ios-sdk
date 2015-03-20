@@ -20,6 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+#import <Foundation/Foundation.h>
+
 typedef NS_ENUM(NSInteger, MMRErrorCodes) {
     MMRErrorUnknown = 1,
     MMRErrorUnknownMethodCalled = 2,
