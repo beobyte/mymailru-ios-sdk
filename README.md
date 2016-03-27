@@ -10,6 +10,34 @@ Link your project with the following frameworks:
 - UIKit.framework
 - CommonCrypto.framework
 
+For iOS 9 don't forget to add this code to your Info.plist:
+
+```XML
+<key>NSAppTransportSecurity</key>
+<dict>
+    <key>NSExceptionDomains</key>
+    <dict>
+        <key>mail.ru</key>
+        <dict>
+            <key>NSIncludesSubdomains</key>
+            <true/>
+            <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+            <true/>
+            <key>NSTemporaryExceptionRequiresForwardSecrecy</key>
+            <false/>
+        </dict>
+        <key>appsmail.ru</key>
+        <dict>
+            <key>NSIncludesSubdomains</key>
+            <true/>
+            <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+            <true/>
+            <key>NSTemporaryExceptionRequiresForwardSecrecy</key>
+            <false/>
+        </dict>
+    </dict>
+</dict>
+```
 
 Drag and drop all sources from MyMailRuSDK directory into your project (MyMailRuSDK.xcodeproj not required).
 
