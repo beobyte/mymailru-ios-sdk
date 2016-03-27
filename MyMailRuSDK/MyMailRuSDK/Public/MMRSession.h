@@ -1,6 +1,6 @@
 // MMRSession.h
 //
-// Copyright (c) 2015 Anton Grachev
+// Copyright (c) 2016 Anton Grachev
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal

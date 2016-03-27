@@ -1,5 +1,5 @@
 // MyMailRuSDK.h
-// Copyright (c) 2015 Anton Grachev
+// Copyright (c) 2016 Anton Grachev
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -27,5 +27,5 @@
 #import <MyMailRuSDK/MMRSession.h>
 #import <MyMailRuSDK/MyMailRu.h>
 
-#define MY_MAIL_RU_SDK_VERSION 130
-#define MY_MAIL_RU_SDK_VERSION_STRING @"1.3.0"
+#define MY_MAIL_RU_SDK_VERSION 131
+#define MY_MAIL_RU_SDK_VERSION_STRING @"1.3.1"
