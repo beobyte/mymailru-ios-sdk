@@ -27,7 +27,7 @@
 #import "MMRUtils.h"
 #import "MMRErrorUtility.h"
 
-static NSString* const kMMRAPIBaseURL = @"http://www.appsmail.ru/platform/api";
+static NSString* const kMMRAPIBaseURL = @"https://www.appsmail.ru/platform/api";
 
 @interface MMRRequest ()
 @property (nonatomic, strong) NSMutableURLRequest *request;

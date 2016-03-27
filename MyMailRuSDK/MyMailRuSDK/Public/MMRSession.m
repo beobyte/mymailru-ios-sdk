@@ -31,7 +31,7 @@
 #import "MMRAuthController.h"
 
 static NSString* const MMROAuthAuthorizeURL = @"https://connect.mail.ru/oauth/authorize";
-static NSString* const MMRRedirectURL = @"http://connect.mail.ru/oauth/success.html";
+static NSString* const MMRRedirectURL = @"https://connect.mail.ru/oauth/success.html";
 static NSString* const MMROAuthTokenURL = @"https://appsmail.ru/oauth/token";
 
 @interface MMRSession () <UIWebViewDelegate, MMRAuthControllerDelegate>
